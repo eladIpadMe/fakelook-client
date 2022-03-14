@@ -20,7 +20,7 @@ export class AuthService implements OnDestroy {
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
         this.setToken(res.token);
-        this.router.navigateByUrl('/Secret');
+        this.router.navigateByUrl('/Stam');
       })
     );
   }
@@ -29,7 +29,7 @@ export class AuthService implements OnDestroy {
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
         this.setToken(res.token);
-        this.router.navigateByUrl('/Secret');
+        this.router.navigateByUrl('/Stam');
       })
     );
   }
