@@ -9,7 +9,7 @@ import { User } from '../models/user.model';
 })
 export class AuthService implements OnDestroy {
 
-  private url = 'https://localhost:44345/api/';
+  private url = 'https://localhost:44349/api/';
   subs: Subscription[] = [];
   constructor(private http: HttpClient, private router: Router) {}
   ngOnDestroy(): void {
@@ -30,7 +30,8 @@ export class AuthService implements OnDestroy {
       this.http.post<any>(currentUrl, user).subscribe((res) => {
         this.setToken(res.token);
         this.router.navigateByUrl('/Stam');
-      })
+      },
+      (error) => alert("Invalid"))
     );
   }
   checkAccess(): Observable<boolean> {
