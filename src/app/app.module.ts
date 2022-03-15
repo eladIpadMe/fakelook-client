@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { StamComponent } from './components/stam/stam.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     UserLoginComponent,
     StamComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    CreatePostComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,

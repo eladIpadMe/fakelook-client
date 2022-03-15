@@ -1,7 +1,7 @@
 
-export class User{
-    id!: number;
-    name!: string;
-    password!: string;
-    address!: string;
+export interface User{
+    id: number;
+    name: string;
+    password: string;
+    address: string;
 }
