@@ -20,7 +20,7 @@ export class SignUpComponent implements OnInit {
       Validators.required,
       Validators.minLength(4),
     ]),
-    role: new FormControl('', Validators.required),
+    // role: new FormControl('', Validators.required),
   });
 
   ngOnInit(): void {}
