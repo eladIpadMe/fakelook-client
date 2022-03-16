@@ -29,16 +29,17 @@ export class AuthService implements OnDestroy {
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
         this.setToken(res.token);
+        console.log(res)
         this.router.navigateByUrl('/Stam');
       },
       (error) => alert("Invalid"))
     );
   }
   checkAccess(): Observable<boolean> {
+    let token = this.getToken();
     const currentUrl = `${this.url}Auth/TestAll`;
-
     const headers = new HttpHeaders({
-      Authorization: 'Bearer ' + this.getToken(),
+      Authorization: 'Bearer ' + token,
     });
     return this.http.get(currentUrl, { headers }).pipe(
       map((_) => true),
