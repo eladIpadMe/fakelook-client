@@ -20,7 +20,7 @@ export class AuthService implements OnDestroy {
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
         console.log("signedup");
-        this.setToken(res.token);
+        this.setToken(res.token, res.userId);
         this.router.navigateByUrl('/Stam');
       },
       (error) => console.log("Couldent sign up"))
@@ -30,7 +30,8 @@ export class AuthService implements OnDestroy {
     const currentUrl = `${this.url}Auth/Login`;
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
-        this.setToken(res.token);
+        console.log("Ive made it");
+        this.setToken(res.token, res.userId);
         this.router.navigateByUrl('/Stam');
       },
       (error) => alert("Invalid"))
@@ -64,7 +65,8 @@ export class AuthService implements OnDestroy {
   private getToken(): string | null {
     return sessionStorage.getItem('token');
   }
-  private setToken(token: string): void {
+  private setToken(token: string, userId: string): void {
     sessionStorage.setItem('token', token);
+    sessionStorage.setItem('id', userId);
   }
 }
