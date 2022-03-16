@@ -26,6 +26,8 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {}
   submitPost(): void {
     const user: User = this.signUpForm.value;
+    console.log(user);
+    console.log(typeof(user));
     this.authService.signUp(user);
   }
 }
