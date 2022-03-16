@@ -19,9 +19,11 @@ export class AuthService implements OnDestroy {
     const currentUrl = `${this.url}Auth/SignUp`;
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
+        console.log("signedup");
         this.setToken(res.token);
         this.router.navigateByUrl('/Stam');
-      })
+      },
+      (error) => console.log("Couldent sign up"))
     );
   }
   login(user: User): void {
