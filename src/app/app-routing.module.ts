@@ -5,6 +5,7 @@ import { StamComponent } from './components/stam/stam.component';
 import { SecretGuard } from './guards/secret.guard';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { LoginComponent } from './login/login.component';
+import { MapComponent } from './components/map/map.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
     canActivate: [SecretGuard],
   },
   {path: `Stam`, component: StamComponent},
+  {path: `map`, component: MapComponent},
   {path: `SignUp`, component: SignUpComponent},
   {path: `Login`, component: LoginComponent},
   {path: `createPost`, component: CreatePostComponent},

@@ -13,6 +13,8 @@ export class StamComponent implements OnInit {
   ngOnInit(): void {
   }
   goToNewPost(){
-    this.router.navigateByUrl('/createPost');
+    // this.router.navigateByUrl('/createPost');
+    this.router.navigateByUrl('/map');
+
   }
 }

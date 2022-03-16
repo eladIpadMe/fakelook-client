@@ -27,7 +27,7 @@ export class AuthService implements OnDestroy {
     );
   }
   login(user: User): void {
-    const currentUrl = `${this.url}Auth/Login`;
+    const currentUrl = `${this.url}Auth/Login`;// shows which controler and which function in it
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
         this.setToken(res.token);

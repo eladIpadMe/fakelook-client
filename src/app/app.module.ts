@@ -12,8 +12,14 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
-
-
+import { MapComponent } from './components/map/map.component';
+import { PostsDialogComponent } from './components/posts-dialog/posts-dialog.component';
+import { PostsDisplayComponent } from './components/posts-display/posts-display.component';
+import { PostsFormComponent } from './components/posts-form/posts-form.component';
+import { PostsMenuComponent } from './components/posts-menu/posts-menu.component';
+import { AngularCesiumModule } from 'angular-cesium';
+import { AngularCesiumWidgetsModule } from 'angular-cesium';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,12 +27,20 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     LoginComponent,
     SignUpComponent,
     CreatePostComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    MapComponent,
+    PostsDialogComponent,
+    PostsDisplayComponent,
+    PostsFormComponent,
+    PostsMenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    RouterModule,
+    AngularCesiumModule.forRoot(),
+    AngularCesiumWidgetsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule
