@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { StamComponent } from './components/stam/stam.component';
-import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 //import { MapComponent } from './components/map/map.component';
@@ -18,6 +17,8 @@ import { PostsMenuComponent } from './components/posts-menu/posts-menu.component
 import { RouterModule } from '@angular/router';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
     CreatePostComponent,
     FileUploadComponent,
     TimelineComponent,
+    MainPageComponent,
     //MapComponent,
     PostsDialogComponent,
     PostsDisplayComponent,
