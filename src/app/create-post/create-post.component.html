@@ -1,9 +1,8 @@
 <h1>Create New Post</h1>
-
 <app-file-upload (pictureUploaded)="getPictureUrl($event)"></app-file-upload>
 <div ></div>
 <label for="description">Description</label>
-<textarea [(ngModel)] = "description" name="description" id="description" cols="30" rows="10"></textarea>
+<textarea [(ngModel)] = "description" name="description" class="description" cols="30" rows="10"></textarea>
 <div>
     <button>Tag Friends</button>
     <button>Add Hashtag</button>

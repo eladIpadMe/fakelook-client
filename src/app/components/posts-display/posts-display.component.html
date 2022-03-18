@@ -1,0 +1,12 @@
+<div class="posts-container">
+    <div *ngFor="let post of posts$ | async" class="post">
+      <div>
+        <img src="{{ post.imageSrc }}" alt="{{ post.description }}" />
+      </div>
+      <div class="display-center">{{ post.description }}</div>
+      <div class="display-center">
+        <button class="btn" (click)="deletePost(post.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+  

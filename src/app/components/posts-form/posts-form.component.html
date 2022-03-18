@@ -1,0 +1,28 @@
+<form #form="ngForm" (ngSubmit)="submitPost(img)">
+    <div class="display-center"><h2>Add Post</h2></div>
+    <label for="description">Description</label>
+    <input
+      type="text"
+      id="description"
+      [(ngModel)]="post.description"
+      #description="ngModel"
+      required
+      name="description"
+    />
+    <label for="img">Image</label>
+    <input
+      type="file"
+      accept="image/png, image/jpeg"
+      id="img"
+      #img
+      (change)="changeFile($event)"
+    />
+    <div class="display-center">
+      <button type="submit" class="btn" [disabled]="!form.valid ||!file">
+        Add Post
+      </button>
+    </div>
+  </form>
+  
+
+  
