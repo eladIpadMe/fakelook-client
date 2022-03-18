@@ -8,9 +8,9 @@ import { PostService } from '../services/post.service';
   styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent implements OnInit {
-  x_position: number= 0.0;
-  y_position: number= 0.0;
-  z_position: number= 0.0;
+  x_Position: number= 0.0;
+  y_Position: number= 0.0;
+  z_Position: number= 0.0;
   description: string= "";
   imageSorce: string = "";
 
@@ -29,9 +29,9 @@ export class CreatePostComponent implements OnInit {
       userId : 1,
       description: this.description,
       imageSorce : this.imageSorce,
-      x_position: this.x_position,
-      y_position: this.y_position,
-      z_position: this.z_position,
+      x_Position: this.x_Position,
+      y_Position: this.y_Position,
+      z_Position: this.z_Position,
       date: new Date
     }
     // console.log(post);

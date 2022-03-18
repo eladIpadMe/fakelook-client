@@ -1,8 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Post } from 'src/app/shared/post.model';
 import * as randomLocation from 'random-location/dist';
-// import { Post } from 'src/app/shared/models/post.model';
-// const randomLocation = require('random-location');
+
+
+import { Post } from 'src/app/models/post.model';
+
 
 @Component({
   selector: 'app-posts-form',
@@ -10,8 +11,11 @@ import * as randomLocation from 'random-location/dist';
   styleUrls: ['./posts-form.component.scss'],
 })
 export class PostsFormComponent implements OnInit {
-  @Output() submitEmitter: EventEmitter<FormData> = new EventEmitter();
-  post = new Post();
+  @Output() submitEmitter: EventEmitter<Post> = new EventEmitter();
+ 
+post: Post = { description: "", imageSorce: "", x_Position: undefined, y_Position: undefined, z_Position: undefined, date: undefined, userId: 1}   
+
+
   file: any;
   Cesium = Cesium;
   
@@ -19,17 +23,19 @@ export class PostsFormComponent implements OnInit {
 
   ngOnInit(): void {}
   changeFile(event: any): void {
-    this.file = event.target.files[0];
+    this.file = event;
   }
-  submitPost(img: any): void {
-    const form = new FormData();
-    form.append('description', this.post.description);
-    form.append('location', JSON.stringify(this.randomLocation()));
-    form.append('image', this.file);
-    this.submitEmitter.emit(form);
-    this.post = new Post();
-    img.value = '';
-    this.file = undefined;
+  submitPost(): void {
+   
+    
+    this.post.imageSorce = this.file;
+    this.post.x_Position = 4439646.379032415;
+    this.post.y_Position = 3109874.6318978276;
+    this.post.z_Position = 3350106.354895249;
+    this.post.date = new Date;
+    this.submitEmitter.emit(this.post);
+    
+    
   }
   private randomLocation(): any {
     const randomStart = {
