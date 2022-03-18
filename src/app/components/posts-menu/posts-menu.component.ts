@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Post } from 'src/app/shared/post.model';
-// import { Post } from 'src/app/shared/models/post.model';
+import { Post } from 'src/app/models/post.model';
 import { PostsService } from '../../services/posts.service';
 
 @Component({
@@ -13,12 +12,10 @@ export class PostsMenuComponent implements OnInit {
   
   
   constructor(private postsService: PostsService) {}
-  posts$!: Observable<Post[]>;
   ngOnInit(): void {
-    this.posts$ = this.postsService.getPosts();
   }
-  onNewPost(form: FormData): void {
-    this.postsService.addPost(form);
+  onNewPost(post: Post): void {
+    this.postsService.createPost(post);
   }
   onPostDelete(id: string): void {
     this.postsService.deletePost(id);
