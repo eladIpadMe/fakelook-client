@@ -21,7 +21,7 @@ export class AuthService implements OnDestroy {
       this.http.post<any>(currentUrl, user).subscribe((res) => {
         console.log("signedup");
         this.setToken(res.token, res.userId);
-        this.router.navigateByUrl('/Stam');
+        this.router.navigateByUrl('/Main-page');
       },
       (error) => console.log("Couldent sign up"))
     );
@@ -30,12 +30,9 @@ export class AuthService implements OnDestroy {
     const currentUrl = `${this.url}Auth/Login`;// shows which controler and which function in it
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
-        this.setToken(res.token);
-        console.log(res)
-
-        console.log("Ive made it");
         this.setToken(res.token, res.userId);
-
+        console.log(res);
+        this.router.navigateByUrl('/Main-page');
       },
       (error) => alert("Invalid"))
     );

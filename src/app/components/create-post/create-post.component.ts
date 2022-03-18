@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../models/post.model';
-import { PostService } from '../services/post.service';
+import { Post } from 'src/app/models/post.model';
+import { User } from 'src/app/models/user.model';
+import { PostService } from 'src/app/services/post.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create-post',
@@ -13,10 +15,14 @@ export class CreatePostComponent implements OnInit {
   z_position: number= 0.0;
   description: string= "";
   imageSorce: string = "";
+  user?: User;
 
-  constructor(private postService: PostService) { }
-
+  constructor(private postService: PostService, private userService: UserService) { }
+ 
   ngOnInit(): void {
+    let id = Number(sessionStorage.getItem("id"));
+    this.userService.getUserById(id).subscribe((user) =>
+      this.user = user)
   }
 
   getPictureUrl(picUrl: any){
@@ -25,8 +31,9 @@ export class CreatePostComponent implements OnInit {
   }
   addPost(){
     let token = sessionStorage.getItem('token');
+    
      const post :Post= {
-      userId : 1,
+      user : <User>this.user,
       description: this.description,
       imageSorce : this.imageSorce,
       x_position: this.x_position,

@@ -10,6 +10,8 @@ import { PostsMenuComponent } from './posts-menu/posts-menu.component';
 import { PostsDialogComponent } from './posts-dialog/posts-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { PostsService } from '../services/posts.service';
+import { MainPageComponent } from './main-page/main-page.component';
+import { TimelineComponent } from './timeline/timeline.component';
 // import { MapComponent } from './components/map/map.component';
 // import { PostsService } from './services/posts.service';
 // import { PostsDisplayComponent } from './components/posts-display/posts-display.component';
@@ -25,6 +27,8 @@ import { PostsService } from '../services/posts.service';
     PostsFormComponent,
     PostsMenuComponent,
     PostsDialogComponent,
+    MainPageComponent,
+    TimelineComponent,
   ],
   exports: [MapComponent],
   imports: [

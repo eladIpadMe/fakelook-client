@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import IUser from '../interfaces/userInterface';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +13,14 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUserById(id:number): Observable<IUser> {
-    return this.http.get<IUser>(this.usersUrl+'/'+id);
+  getUserById(id:number): Observable<User> {
+    return this.http.get<User>(this.usersUrl+'/'+id);
   }
 
-  updateUser(user: IUser): Observable<IUser>{
+  updateUser(user: User): Observable<User>{
     let httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
-    return this.http.put<IUser>(this.usersUrl, user, httpOptions);
+    return this.http.put<User>(this.usersUrl, user, httpOptions);
   }
 }

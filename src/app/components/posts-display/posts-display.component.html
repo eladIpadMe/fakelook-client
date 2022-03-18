@@ -1,11 +1,15 @@
 <div class="posts-container">
-    <div *ngFor="let post of posts$ | async" class="post">
+    <!-- <div *ngFor="let post of posts$ | async" class="post"> -->
+      <div *ngFor="let post of posts" class="post">
       <div>
-        <img src="{{ post.imageSrc }}" alt="{{ post.description }}" />
+        <img src="{{ post.imageSorce }}" alt="{{ post.description }}" />
       </div>
       <div class="display-center">{{ post.description }}</div>
+      <div>Name: {{post.user.firstName}} {{post.user.lastName}}</div>
+        <div>Postet on: {{post.date | date: 'short'}}</div>
+        
       <div class="display-center">
-        <button class="btn" (click)="deletePost(post.id)">Delete</button>
+        <!-- <button class="btn" (click)="deletePost(post.id)">Delete</button> -->
       </div>
     </div>
   </div>

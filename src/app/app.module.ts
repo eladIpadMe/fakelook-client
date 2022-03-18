@@ -5,21 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
 import { StamComponent } from './components/stam/stam.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { CreatePostComponent } from './create-post/create-post.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
-import { MapComponent } from './components/map/map.component';
+//import { MapComponent } from './components/map/map.component';
 import { PostsDialogComponent } from './components/posts-dialog/posts-dialog.component';
 import { PostsDisplayComponent } from './components/posts-display/posts-display.component';
 import { PostsFormComponent } from './components/posts-form/posts-form.component';
 import { PostsMenuComponent } from './components/posts-menu/posts-menu.component';
-import { AngularCesiumModule } from 'angular-cesium';
-import { AngularCesiumWidgetsModule } from 'angular-cesium';
 import { RouterModule } from '@angular/router';
+import { CreatePostComponent } from './components/create-post/create-post.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +26,8 @@ import { RouterModule } from '@angular/router';
     SignUpComponent,
     CreatePostComponent,
     FileUploadComponent,
-    MapComponent,
+    TimelineComponent,
+    //MapComponent,
     PostsDialogComponent,
     PostsDisplayComponent,
     PostsFormComponent,
@@ -39,13 +38,15 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     FormsModule,
     RouterModule,
-    AngularCesiumModule.forRoot(),
-    AngularCesiumWidgetsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    HttpClientModule
+    //AngularCesiumModule.forRoot(),
+    // AngularCesiumWidgetsModule,
+     ReactiveFormsModule,
+     BrowserAnimationsModule,
+     HttpClientModule
   ],
+  exports: [ RouterModule  ],
   providers: [],
   bootstrap: [AppComponent]
 })
+//export class AppRoutingModule {  }
 export class AppModule { }
