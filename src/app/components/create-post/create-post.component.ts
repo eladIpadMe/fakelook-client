@@ -39,7 +39,9 @@ export class CreatePostComponent implements OnInit {
       x_position: this.x_position,
       y_position: this.y_position,
       z_position: this.z_position,
-      date: new Date
+      date: new Date,
+      likes: [],
+      comments: []
     }
     // console.log(post);
     // console.log(typeof(post));

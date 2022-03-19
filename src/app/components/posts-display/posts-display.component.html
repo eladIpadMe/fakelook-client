@@ -1,15 +1,57 @@
 <div class="posts-container">
     <!-- <div *ngFor="let post of posts$ | async" class="post"> -->
       <div *ngFor="let post of posts" class="post">
-      <div>
-        <img src="{{ post.imageSorce }}" alt="{{ post.description }}" />
+      
+      <div class="user-name"> {{post.user.firstName}} {{post.user.lastName}}</div>
+      <div class="date-posted">{{post.date | date: 'short'}}</div>
+      <div >{{ post.description }}</div>
+      <div><img src="{{ post.imageSorce }}" alt="{{ post.description }}"/> </div>
+     
+     <div class="display-likes" *ngIf="likesPressed">
+      <div class="likes-container" >
+        <button (click)="exitLikesScreen()"><img src="..\..\..\assets\exit-btn-logo.png" alt="" class="exit-btn"></button> 
+        <div *ngFor="let like of post.likes">
+          {{like.user.firstName}} {{like.user.lastName}}
+        </div>
       </div>
-      <div class="display-center">{{ post.description }}</div>
-      <div>Name: {{post.user.firstName}} {{post.user.lastName}}</div>
-        <div>Postet on: {{post.date | date: 'short'}}</div>
-        
-      <div class="display-center">
+     </div> 
+      <div class="likes-and-comments">
+        <button class="show-likes-btn" (click)="showLikesList()">
+          {{post.likes.length}} Likes<img src="..\..\..\assets\like-logo.png" alt="like-logo" class="like-logo">
+          <img src="..\..\..\assets\love-logo.png" alt="love-logo" class="love-logo">
+        </button>
+        <button (click) = "showComments()" class="show-comment-btn"> {{ post.comments.length }} Comments</button>
         <!-- <button class="btn" (click)="deletePost(post.id)">Delete</button> -->
+      </div>
+      <div class="post-options">
+        <button class="like-btn" (click) = "highlightLike(post)" [class.liked] = "likedPost">
+          Like<img src= "..\..\..\assets\like-logo-original.png" alt="" class="like-btn-logo">
+        </button>
+        <button class="comment-btn" (click)="comment()">
+          Comment<img src="..\..\..\assets\comment-logo.png" alt="" class="comment-btn-logo">
+        </button>
+        <button class="block-btn" (click)="blockUser()">
+          Block<img src="..\..\..\assets\block-user-logo.png" alt="" class="block-btn-logo">
+      </button>
+        <!-- <button class="btn" (click)="deletePost(post.id)">Delete</button> -->
+      </div>
+     
+      
+      <div class="comments-container" *ngIf="commentsPressed">
+        <div *ngFor="let comment of post.comments">
+          <div>{{comment.user.firstName}} {{comment.user.lastName}}</div>
+          <div>{{ comment.content }} </div>
+          <div *ngIf ="comment.hashtags.length > 0" >
+            <span *ngFor="let hashtag of comment.hashtags">
+              {{hashtag.contant}}
+            </span>
+          </div>
+          <div *ngIf="comment.usersTagged.length > 0">
+            <span *ngFor="let userTagged of comment.usersTagged">
+              {{userTagged.user.firstName}} {{userTagged.user.lastName}}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

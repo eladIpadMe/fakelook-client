@@ -1,4 +1,6 @@
+import { Like } from "./like.model";
 import { User } from "./user.model";
+import { Comment } from "./comment.model";
 
 export interface Post{
     description: string;
@@ -8,4 +10,6 @@ export interface Post{
     z_position: number;
     date: Date;
     user: User;
+    likes: Like[];
+    comments: Comment[];
 }

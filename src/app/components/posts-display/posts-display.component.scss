@@ -2,11 +2,154 @@
     width: 100%;
     padding: 0.5em 0em;
   }
-  img {
-    width: 100%;
+  body{
+    font-family: 'Roboto', sans-serif;
   }
   .posts-container {
     //height: 40vh;
     overflow: auto;
+    width: 20rem;
   }
-  
+
+  .post-options{
+    display: flex;
+  }
+
+  .show-likes-btn{
+    display: inline;
+    text-align: right;
+  }
+  .show-comment-btn{
+    display: inline;
+    text-align: left;
+  }
+  img{
+    width: 20rem;
+    height: 20rem;
+  }
+button{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+.date-posted{
+  font-size: 0.62rem;
+}
+.user-name{
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+}
+.likes-and-comments{
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 0.8rem;
+}
+
+.post-options{
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  width: 98%;
+  margin: 0 auto;
+  display: flex;
+  //justify-content: space-around;
+  color: rgba(0, 0, 0, 0.65);
+}
+.like-logo{
+  width: 1rem;
+  height: 1rem;
+  margin-bottom: 0;
+  position: relative;
+  bottom: 0;
+  top: 0.2rem;
+  margin-left: 0.1rem;
+  z-index: 20;
+}
+.post-options> button{
+  flex-grow: 1;
+  //@at-root: 0.7rem;
+}
+
+.show-comment-btn{
+  position: relative;
+  left: 10rem;
+}
+.love-logo{
+  width: 1rem;
+  height: 1rem;
+  margin-bottom: 0;
+  position: relative;
+  bottom: 0;
+  top: 0.2rem;
+  margin-left: -0.2rem;
+}
+.like-btn-logo{
+  width: 1rem;
+  height: 1rem;
+  position: relative;
+  top: 0.08rem;
+  margin-left: 0.1rem;
+}
+.comment-btn-logo{
+  width: 1.1rem;
+  height: 1.1rem;
+  position: relative;
+  top: 0.25rem;
+  margin-left: 0.1rem;
+}
+.post-options> button:hover{
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  // color: #2FA4FF;
+  // font-weight: 500;
+}
+.liked{
+  color: #2FA4FF;
+  font-weight: 500;
+}
+.block-btn-logo{
+  width: 1rem;
+  height: 1rem;
+  position: relative;
+  top: 0.15rem;
+  margin-left: 0.15rem;
+}
+.display-likes{
+  display: inline-block;
+  opacity: 0.3;
+  position: absolute;
+  padding: 1rem;
+  border-radius: 4px;
+  bottom: 15rem;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  z-index: 50;
+transition: 8s;
+}
+.likes-container{
+  background-color: white;
+  opacity: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  text-align: center;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  border-radius: 4px;
+  padding: 2rem;
+}
+.exit-btn{
+  width: 1.1rem;
+  height: 1.1rem;
+  position: relative;
+  top: -1.9rem;
+  right: -5.8rem;
+}

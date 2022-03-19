@@ -30,4 +30,10 @@ export class PostService {
   getPosts(): Observable<Post[]>{
     return this.http.get<Post[]>(`${this.url}Post`);
   }
+
+
+  ///////check!!!////////
+  // updatePost(post: Post){
+  //   this.http.put<Post>(`${this.url}Post/${post.id}`, post);
+  // }
 }
