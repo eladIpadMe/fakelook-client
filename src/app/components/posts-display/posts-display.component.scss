@@ -1,20 +1,29 @@
+
 .post {
     width: 100%;
     padding: 0.5em 0em;
+    width: 60%;
+
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 6px;
+    margin: 1rem auto;
+    padding: 1rem;
+    min-width: 20rem;
   }
+
   body{
     font-family: 'Roboto', sans-serif;
+    //background-color: rgba(0, 0, 0, 0.05);
   }
+
   .posts-container {
+    margin: 0 auto;
     //height: 40vh;
     overflow: auto;
-    width: 20rem;
+    width: 100%;
+    //background-color: rgba(0, 0, 0, 0.05);
   }
-
-  .post-options{
-    display: flex;
-  }
-
   .show-likes-btn{
     display: inline;
     text-align: right;
@@ -24,6 +33,7 @@
     text-align: left;
   }
   img{
+    margin: 0 auto;
     width: 20rem;
     height: 20rem;
   }
@@ -50,9 +60,9 @@ button{
 }
 
 .post-options{
-  border-top: 1px solid rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  width: 98%;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  width: 100%;
   margin: 0 auto;
   display: flex;
   //justify-content: space-around;
@@ -75,7 +85,7 @@ button{
 
 .show-comment-btn{
   position: relative;
-  left: 10rem;
+  left: 9.3rem;
 }
 .love-logo{
   width: 1rem;
@@ -119,7 +129,7 @@ button{
 }
 .display-likes{
   display: inline-block;
-  opacity: 0.3;
+  opacity: 0.8;
   position: absolute;
   padding: 1rem;
   border-radius: 4px;
@@ -138,18 +148,87 @@ transition: 8s;
 }
 .likes-container{
   background-color: white;
-  opacity: none;
+  opacity: 1;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   text-align: center;
   grid-column: 2/3;
   grid-row: 2/3;
   border-radius: 4px;
-  padding: 2rem;
+  padding: 0 1rem;
+  overflow: auto;
+  height: 15rem;
 }
 .exit-btn{
   width: 1.1rem;
   height: 1.1rem;
   position: relative;
-  top: -1.9rem;
-  right: -5.8rem;
+  top: 0.2rem;
+  right: -4.5rem;
+}
+// .comments-container{
+//   display: grid;
+//   grid-template-columns: 1fr;
+// }
+// .comment-div{
+//   display: block;
+// }
+.comments-container{
+  height: 10rem;
+  overflow: auto;
+  //transition: 10s;
+}
+.comment-div{
+  display: inline-block;
+  margin: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  padding: 0.6rem;
+}
+form{
+  //position: fixed;
+  border: none;
+  //height: 2rem ;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.05);
+  margin: 0;
+  padding: 0.2rem;
+  margin: 0.5rem;
+  top: 0;
+
+}
+.write-comment-inp{
+  //position: fixed;
+  box-sizing: border-box;
+  width: 80%;
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.0);
+  border: none;
+  margin:  0;
+  padding: 0.15rem;
+}
+.tag-friend-logo{
+  width: 1rem;
+  height: 1rem;
+  position: relative;
+  top: 0.15rem;
+  margin-left: 0.5rem;
+}
+
+.hashtag-logo{
+  width: 0.9rem;
+  height: 0.9rem;
+  position: relative;
+  top: 0.15rem;
+  margin-left: 0.15rem;
+}
+.comment-user{
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.comment-content{
+  font-weight: 300;
+}
+.highliteCommentBtn{
+  font-weight: 600;
+  background-color: rgba(0, 0, 0, 0.05);
 }

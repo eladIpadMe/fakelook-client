@@ -6,15 +6,17 @@ import { SecretGuard } from './guards/secret.guard';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { LoginComponent } from './components/login/login.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 //import { MapComponent } from './components/map/map.component';
 
 const routes: Routes = [
 
   {path: 'Main-page', component: MainPageComponent, children: [
     {path: 'Map', component: StamComponent},
-    {path: 'Timeline', component: TimelineComponent},
-    {path: '', redirectTo: 'Timeline', pathMatch: 'full'},
+    {path: 'TimeLine', component: TimelineComponent},
+    //{path: '', redirectTo: 'Timeline', pathMatch: 'full'},
   ]},
+  {path:`new-post`, component: CreatePostComponent},
   {path: `Stam`, component: StamComponent},
   {path: `SignUp`, component: SignUpComponent},
   {path: `Login`, component: LoginComponent},

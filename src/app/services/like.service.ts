@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Like } from '../models/like.model';
@@ -7,13 +7,15 @@ import { Like } from '../models/like.model';
   providedIn: 'root'
 })
 export class LikeService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   private url= environment.url;
   
   createLike(like: Like){
     const currentUrl = `${this.url}Like`;
-    this.http.post<Like>(currentUrl, like).subscribe((res) => {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+    });
+    this.http.post<Like>(currentUrl, like, {headers}).subscribe((res) => {
       //this.router.navigateByUrl('/Stam');
       console.log(like);
       console.log("New like entered!");

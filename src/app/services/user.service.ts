@@ -10,14 +10,20 @@ import { User } from '../models/user.model';
 export class UserService {
 
   private usersUrl = 'https://localhost:44349/api/User';// what should i give here?
-
-  constructor(private http: HttpClient) { }
+  headers?: HttpHeaders;
+  constructor(private http: HttpClient) {
+    this.headers = new HttpHeaders({
+      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+    });
+   }
 
   getUserById(id:number): Observable<User> {
-    return this.http.get<User>(this.usersUrl+'/'+id);
+    const headers = this.headers;
+    return this.http.get<User>(this.usersUrl+'/'+id, {headers});
   }
 
   updateUser(user: User): Observable<User>{
+    const headers = this.headers;
     let httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };

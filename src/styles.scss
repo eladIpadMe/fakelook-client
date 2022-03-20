@@ -80,9 +80,11 @@ form {
   content: "🚫";
 }
 
-html, body {
+//html,
+ body {
   margin: 0;
   width: 100%;
   height: 100%;
   font-family:  'Roboto', sans-serif;
+  background-color: rgba(0, 0, 0, 0.05);;
   }

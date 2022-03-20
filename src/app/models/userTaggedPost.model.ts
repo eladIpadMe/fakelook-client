@@ -1,11 +1,11 @@
-
 import { Post } from "./post.model";
 import { User } from "./user.model";
 
-export interface Like{
-    isActive: boolean;
+
+export interface UserTaggedPost{
+    id: number;
+    user: User;
     userId: number;
-    user?: User;
+    post: Post;
     postId: number;
-    post?: Post;
 }

@@ -15,7 +15,7 @@ export class CreatePostComponent implements OnInit {
   z_position: number= 0.0;
   description: string= "";
   imageSorce: string = "";
-  user?: User;
+  user= {} as User;
 
   constructor(private postService: PostService, private userService: UserService) { }
  
@@ -32,18 +32,18 @@ export class CreatePostComponent implements OnInit {
   addPost(){
     let token = sessionStorage.getItem('token');
     
+    let id = Number(sessionStorage.getItem("id"));
      const post :Post= {
-      user : <User>this.user,
+       
+      userId : id,
       description: this.description,
       imageSorce : this.imageSorce,
       x_position: this.x_position,
       y_position: this.y_position,
       z_position: this.z_position,
-      date: new Date,
-      likes: [],
-      comments: []
+      date: new Date
     }
-    // console.log(post);
+    console.log(post);
     // console.log(typeof(post));
     // let jpost = JSON.stringify(post);
     // console.log(jpost);

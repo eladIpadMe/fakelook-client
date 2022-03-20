@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Post } from '../models/post.model';
 
@@ -8,16 +8,21 @@ import { Post } from '../models/post.model';
   providedIn: 'root'
 })
 export class PostService {
-
-  constructor(private http: HttpClient) { }
+ headers?: HttpHeaders;
+  constructor(private http: HttpClient) {
+    this.headers = new HttpHeaders({
+      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+    });
+   }
 
   private url= environment.url;
 
-  createPost(post: any): void {
+  createPost(post: Post): void {
 
     const currentUrl = `${this.url}Post/Post`;
-   
-      this.http.post<any>(currentUrl, post).subscribe((res) => {
+
+    const headers = this.headers;
+      this.http.post<Post>(currentUrl, post, {headers}).subscribe((res) => {
         //this.router.navigateByUrl('/Stam');
         console.log(post);
         console.log("New post entered!");
@@ -28,9 +33,13 @@ export class PostService {
   }
 
   getPosts(): Observable<Post[]>{
-    return this.http.get<Post[]>(`${this.url}Post`);
-  }
+    //const currentUrl = `${this.url}Secret/`;  
 
+  const headers = this.headers;
+    return this.http.get<Post[]>(`${this.url}Post`, {headers}).pipe(
+      map((res) => res));
+      //catchError((err) => of({msg: 'Your session has expired. Please register again'})));
+  }
 
   ///////check!!!////////
   // updatePost(post: Post){
