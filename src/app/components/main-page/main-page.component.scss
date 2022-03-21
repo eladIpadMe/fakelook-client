@@ -1,0 +1,21 @@
+.main-page{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    
+}
+.display-container,
+.filter-container{
+    flex-grow: 1;
+   // background-color: rgba(0, 0, 0, 0.05);
+}
+ul{
+    display: flex;
+}
+a{
+    text-decoration: none;
+}
+li{
+    display: inline-block;
+    margin: 0.7rem;
+}

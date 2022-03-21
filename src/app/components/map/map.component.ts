@@ -8,9 +8,10 @@ import {
 import { Observable } from 'rxjs';
 import { mergeMap, map } from 'rxjs/operators';
 import { Post } from 'src/app/models/post.model';
+// import { PostService } from 'src/app/services/post.service';
+import { PostsService } from 'src/app/services/posts.service';
 // import { Post } from 'src/app/shared/post.model';
 // import { Post } from 'src/app/shared/models/post.model';
-import { PostsService } from '../../services/posts.service';
 
 
 @Component({
@@ -65,12 +66,12 @@ export class MapComponent implements OnInit {
 
   convertPost(post: Post): AcEntity {
     return {id: post.id, description: post.description, imageSorce: post.imageSorce,
-       location: Cesium.Cartesian3.fromDegrees(post.x_Position,  post.y_Position), isShow: true}
+       location: Cesium.Cartesian3.fromDegrees(post.x_position,  post.y_position), isShow: true}
   }
   // {x: post.x_Position, y: post.y_Position, z: post.z_Position }
   validationOfId(post: Post): string  {
     if(post.id !== undefined)
-      return  post.id
+      return  post.id.toString()
     console.log("id is undefined")
     return "1";
   }

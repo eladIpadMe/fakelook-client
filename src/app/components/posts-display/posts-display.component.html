@@ -1,11 +1,130 @@
 <div class="posts-container">
-  <div *ngFor="let post of posts " class="post">
+  <!-- <div *ngFor="let post of posts " class="post">
     <div>
       <img src="{{ post.imageSorce }}" alt="{{ post.description }}" />
     </div>
     <div class="display-center">{{ post.description }}</div>
     <div class="display-center">
-      <button class="btn" (click)="deletePost(post)">Delete</button>
+      <button class="btn" (click)="deletePost(post)">Delete</button> -->
+  <!-- <div *ngFor="let post of posts$ | async" class="post"> -->
+  <div *ngFor="let post of postsD" class="post">
+    <div class="user-name">
+      {{ post.user?.firstName }} {{ post.user?.lastName }}
+    </div>
+    <div class="date-posted">{{ post.date | date: "short" }}</div>
+    <div>{{ post.description }}</div>
+    <div><img src="{{ post.imageSorce }}" alt="{{ post.description }}" /></div>
+
+    <div class="display-likes" *ngIf="checkIfDisplayLikesPressed(post)">
+      <div class="likes-container">
+        <button (click)="exitLikesScreen(post)">
+          <img
+            src="..\..\..\assets\exit-btn-logo.png"
+            alt=""
+            class="exit-btn"
+          />
+        </button>
+        <div *ngFor="let like of post.likes">
+          {{ like.user?.firstName }} {{ like.user?.lastName }}
+        </div>
+      </div>
+    </div>
+    <div class="likes-and-comments">
+      <button class="show-likes-btn" (click)="showLikesList(post)">
+        {{ findIndex(post) }} Likes<img
+          src="..\..\..\assets\like-logo.png"
+          alt="like-logo"
+          class="like-logo"
+        />
+        <img
+          src="..\..\..\assets\love-logo.png"
+          alt="love-logo"
+          class="love-logo"
+        />
+      </button>
+      <button (click)="showComments(post)" class="show-comment-btn">
+        {{ post.comments?.length }} Comments
+      </button>
+      <!-- <button class="btn" (click)="deletePost(post.id)">Delete</button> -->
+    </div>
+    <div class="post-options">
+      <button
+        class="like-btn"
+        (click)="highlightLike(post)"
+        [class.liked]="checkIfLiked(post)"
+      >
+        Like<img
+          src="..\..\..\assets\like-logo-original.png"
+          alt=""
+          class="like-btn-logo"
+        />
+      </button>
+      <button
+        class="comment-btn"
+        (click)="showComments(post)"
+        [class.highliteCommentBtn]="checkIfDisplayComments(post)"
+      >
+        Comment<img
+          src="..\..\..\assets\comment-logo.png"
+          alt=""
+          class="comment-btn-logo"
+        />
+      </button>
+      <button class="block-btn" (click)="blockUser()">
+        Block<img
+          src="..\..\..\assets\block-user-logo.png"
+          alt=""
+          class="block-btn-logo"
+        />
+      </button>
+      <!-- <button class="btn" (click)="deletePost(post.id)">Delete</button> -->
+    </div>
+
+    <div class="comments-container" *ngIf="checkIfDisplayComments(post)">
+      <form action="">
+        <input
+          id="stam"
+          type="text"
+          class="write-comment-inp"
+          placeholder="Add Comment..."
+          (keydown.enter)="addComment($event, post)"
+        />
+        <button class="tag-friends">
+          <img
+            src="..\..\..\assets\tag-friend-logo.png"
+            alt="tag-friend-logo"
+            class="tag-friend-logo"
+          />
+        </button>
+        <button class="hashtag">
+          <img
+            src="..\..\..\assets\hashtag-logo.png"
+            alt="hashtag-logo"
+            class="hashtag-logo"
+          />
+        </button>
+      </form>
+
+      <!-- (keydown.enter)="addComent($event)"> -->
+
+      <div *ngFor="let comment of post.comments" class="comment">
+        <div class="comment-div">
+          <div class="comment-user">
+            {{ comment.user?.firstName }} {{ comment.user?.lastName }}
+          </div>
+          <div class="comment-content">{{ comment.content }}</div>
+          <div *ngIf="comment.hashtags !== null">
+            <span *ngFor="let hashtag of comment.hashtags">
+              {{ hashtag.contant }}
+            </span>
+          </div>
+          <div *ngIf="comment.usersTagged !== null">
+            <span *ngFor="let userTagged of comment.usersTagged">
+              {{ userTagged.user.firstName }} {{ userTagged.user.lastName }}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
