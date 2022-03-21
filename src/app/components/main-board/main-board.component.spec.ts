@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StamComponent } from './stam.component';
+import { MainBoardComponent } from './main-board.component';
 
-describe('StamComponent', () => {
-  let component: StamComponent;
-  let fixture: ComponentFixture<StamComponent>;
+describe('MainBoardComponent', () => {
+  let component: MainBoardComponent;
+  let fixture: ComponentFixture<MainBoardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StamComponent ]
+      declarations: [ MainBoardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StamComponent);
+    fixture = TestBed.createComponent(MainBoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

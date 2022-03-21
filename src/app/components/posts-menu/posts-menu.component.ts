@@ -12,7 +12,13 @@ export class PostsMenuComponent implements OnInit {
   
   
   constructor(private postsService: PostsService) {}
+  posts: Post[] = [];
+
   ngOnInit(): void {
+    this.postsService.getPosts().subscribe(
+      (posts) => (this.posts = posts),
+      (error) => console.log(error)
+    );
   }
   onNewPost(post: Post): void {
     this.postsService.createPost(post);

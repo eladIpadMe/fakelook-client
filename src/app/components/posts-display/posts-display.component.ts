@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Post } from 'src/app/shared/post.model';
+import { Post } from 'src/app/models/post.model';
 
 @Component({
   selector: 'app-posts-display',
@@ -9,11 +9,11 @@ import { Post } from 'src/app/shared/post.model';
 })
 export class PostsDisplayComponent implements OnInit {
   constructor() {}
-  @Input() posts$!: Observable<Post[]>;
+  @Input() posts: Post[] | undefined;
   @Output() postDeleteEventEmitter = new EventEmitter<string>();
   ngOnInit(): void {
   }
-  deletePost(id: string): void {
-    this.postDeleteEventEmitter.emit(id);
+  deletePost(post: Post): void {
+    this.postDeleteEventEmitter.emit(post.id);
   }
 }

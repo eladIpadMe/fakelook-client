@@ -7,10 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
-import { StamComponent } from './components/stam/stam.component';
+// import { StamComponent } from './components/stam/stam.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { CreatePostComponent } from './create-post/create-post.component';
+ import { CreatePostComponent } from './create-post/create-post.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { MapComponent } from './components/map/map.component';
 import { PostsDialogComponent } from './components/posts-dialog/posts-dialog.component';
@@ -20,15 +20,17 @@ import { PostsMenuComponent } from './components/posts-menu/posts-menu.component
 import { AngularCesiumModule } from 'angular-cesium';
 import { AngularCesiumWidgetsModule } from 'angular-cesium';
 import { RouterModule } from '@angular/router';
+import { MainBoardComponent } from './components/main-board/main-board.component';
 @NgModule({
   declarations: [
     AppComponent,
-    StamComponent,
+    // StamComponent,
     LoginComponent,
     SignUpComponent,
     CreatePostComponent,
     FileUploadComponent,
     MapComponent,
+    MainBoardComponent,
     PostsDialogComponent,
     PostsDisplayComponent,
     PostsFormComponent,

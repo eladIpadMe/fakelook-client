@@ -1,0 +1,16 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto;
+
+    .map-and-timeLine {
+        grid-column-start: 2;
+        grid-column-end: 5;  
+      }
+
+      .nav-routed {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        z-index: 100;  
+      }
+  }
