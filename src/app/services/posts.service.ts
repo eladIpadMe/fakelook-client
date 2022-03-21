@@ -60,4 +60,5 @@ export class PostsService implements OnDestroy {
       (error) => console.log(error)
       );
   }
+
 }

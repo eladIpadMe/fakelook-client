@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import IUser from '../interfaces/userInterface';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,17 +10,23 @@ import IUser from '../interfaces/userInterface';
 export class UserService {
 
   private usersUrl = 'https://localhost:44349/api/User';// what should i give here?
+  headers?: HttpHeaders;
+  constructor(private http: HttpClient) {
+    this.headers = new HttpHeaders({
+      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+    });
+   }
 
-  constructor(private http: HttpClient) { }
-
-  getUserById(id:number): Observable<IUser> {
-    return this.http.get<IUser>(this.usersUrl+'/'+id);
+  getUserById(id:number): Observable<User> {
+    const headers = this.headers;
+    return this.http.get<User>(this.usersUrl+'/'+id, {headers});
   }
 
-  updateUser(user: IUser): Observable<IUser>{
+  updateUser(user: User): Observable<User>{
+    const headers = this.headers;
     let httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
-    return this.http.put<IUser>(this.usersUrl, user, httpOptions);
+    return this.http.put<User>(this.usersUrl, user, httpOptions);
   }
 }
