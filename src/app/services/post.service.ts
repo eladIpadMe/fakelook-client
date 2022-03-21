@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Like } from '../models/like.model';
 import { Post } from '../models/post.model';
 
 @Injectable({
@@ -39,6 +40,15 @@ export class PostService {
     return this.http.get<Post[]>(`${this.url}Post`, {headers}).pipe(
       map((res) => res));
       //catchError((err) => of({msg: 'Your session has expired. Please register again'})));
+  }
+
+  manageLike(userId: number, postId: number){
+    const headers = this.headers;
+    let like: Like = {userId:userId, postId:postId};
+    this.http.post(`${this.url}Post/ManageLike`, like)
+    .subscribe((res)=> console.log("new like entered!"),
+    (error) => console.log(error)
+    );
   }
 
   ///////check!!!////////

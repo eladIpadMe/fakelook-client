@@ -27,6 +27,7 @@ export class PostsDisplayComponent implements OnInit {
   user?: User;
   newLike: boolean = true;
   userId: number = 0;
+  likesCount = new Map();
   //@Input() posts$!: Observable<Post[]>;
   @Output() postDeleteEventEmitter = new EventEmitter<string>();
   
@@ -47,46 +48,75 @@ export class PostsDisplayComponent implements OnInit {
       this.posts = posts;
       console.log(this.posts);
       this.posts.forEach(p =>{
-        this.likedPost[<number>p.id]= false;
+        p.likes?.forEach(like => {
+          if(like.isActive){
+            if(this.likesCount.get(p.id) != null){
+              this.likesCount.set(p.id, this.likesCount.get(p.id) + 1)
+            }
+            else{
+              this.likesCount.set(p.id, 1);
+            }
+          }
+          console.log(like);
+          if(like.userId === this.userId && like.isActive === true){
+            this.likedPost[<number>p.id] = true;
+          }
+        });
+
+        this.likesCount.forEach(item =>{
+          if(item !== undefined || item !== null){
+            item = false;
+          }
+        });
+         
+        //this.likedPost[<number>p.id]= false;
         this.dispalyLikesPressed[<number>p.id] = false;
         this.commentsPressed[<number>p.id] = false;
       })
     },
     (error) => console.log(error))
   }
-
+  findIndex(post: Post): Number{
+    return this.likesCount.get(post.id);
+  }
   deletePost(id: string): void {
     this.postDeleteEventEmitter.emit(id);
   }
 
   highlightLike(post: Post){
     this.likedPost[<number>post.id] = !this.likedPost[<number>post.id];
-  if(this.likedPost[<number>post.id]){
-    console.log("the liked post is: ");
-    console.log(post);
-    if(post.likes){
-      post.likes.forEach(like => {
-        if(like.user === this.user){
-          this.newLike = false;
-        }
-        // else{
-        //   like.isActive = !like.isActive;
-        // }
-      });
-    }
-      
-      if(this.newLike){
-        let like = {
-          isActive: true,
-          userId: this.userId,
-          postId: <number>post.id
-        }
-        console.log(`new Like is: `);
-        console.log(like);
-        this.likeService.createLike(like);
-        console.log(post);
-      }
-  }
+    this.postService.manageLike(<number>post.id, this.userId);
+    // console.log("the liked post is: ");
+    // console.log(post);
+    // if(post.likes){
+    //   post.likes.forEach(like => {
+    //     if(like.user === this.user){
+    //       this.newLike = false;
+    //       this.getLike()
+    //     }
+    //     // else{
+    //     //   like.isActive = !like.isActive;
+    //     // }
+    //   });
+    // }
+    // //like already exists and the user removed it- update database
+    //   if(!this.newLike){
+    //     this.likeService.updateLike(like)
+    //   }
+
+    //   //new like- add to database
+    //   if(this.newLike){
+    //     let like = {
+    //       isActive: true,
+    //       userId: this.userId,
+    //       postId: <number>post.id
+    //     }
+    //     console.log(`new Like is: `);
+    //     console.log(like);
+    //     this.likeService.createLike(like);
+    //     console.log(post);
+    //   }
+  
   
     //this.postService.updatePost(post);
   }
@@ -101,6 +131,7 @@ export class PostsDisplayComponent implements OnInit {
 
   showLikesList(post: Post){
     this.dispalyLikesPressed[<number>post.id] = !this.dispalyLikesPressed[<number>post.id];
+    
   }
 
   checkIfLiked(post: Post): boolean{
@@ -112,6 +143,7 @@ export class PostsDisplayComponent implements OnInit {
 
 
   showComments(post: Post){
+
     this.commentsPressed[<number>post.id] = !this.commentsPressed[<number>post.id] ;
     //this.input.nativeElement.focus();
     console.log(document.getElementById("stam"));
@@ -125,7 +157,7 @@ export class PostsDisplayComponent implements OnInit {
   checkIfDisplayLikesPressed(post: Post): boolean{
     return this.dispalyLikesPressed[<number>post.id];
   }
-  addComent(event: any, post: Post){
+  addComment(event: any, post: Post){
     let newCommentContent = event.target.value;
     console.log(newCommentContent);
     event.target.value = "";

@@ -51,4 +51,5 @@ export class PostsService implements OnDestroy {
         .subscribe((res) => this.postsSubject.next(res))
     );
   }
+
 }

@@ -17,7 +17,7 @@
      </div> 
       <div class="likes-and-comments">
         <button class="show-likes-btn" (click)="showLikesList(post)">
-          {{post.likes?.length}} Likes<img src="..\..\..\assets\like-logo.png" alt="like-logo" class="like-logo">
+          {{ findIndex(post) }} Likes<img src="..\..\..\assets\like-logo.png" alt="like-logo" class="like-logo">
           <img src="..\..\..\assets\love-logo.png" alt="love-logo" class="love-logo">
         </button>
         <button (click) = "showComments(post)" class="show-comment-btn"> {{ post.comments?.length }} Comments</button>
@@ -39,7 +39,7 @@
       
       <div class="comments-container" *ngIf="checkIfDisplayComments(post)">
        <form action="">
-        <input id="stam" type="text" class="write-comment-inp" placeholder="Add Comment..." (keydown.enter)="addComent($event, post)">
+        <input id="stam" type="text" class="write-comment-inp" placeholder="Add Comment..." (keydown.enter)="addComment($event, post)">
         <button class="tag-friends"><img src="..\..\..\assets\tag-friend-logo.png" alt="tag-friend-logo" class="tag-friend-logo"></button>
         <button class="hashtag"><img src="..\..\..\assets\hashtag-logo.png" alt="hashtag-logo" class="hashtag-logo"></button>
        </form>
