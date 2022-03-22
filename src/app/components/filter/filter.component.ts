@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PostsFilter } from 'src/app/models/postsfilter.model';
 
 @Component({
   selector: 'app-filter',
@@ -35,6 +36,12 @@ export class FilterComponent implements OnInit {
   ngOnInit(): void {
   }
   submitPost(){
-
+    let postFilte: PostsFilter ={
+      publishers : this.filterForm.controls.Publishers.value,
+      startingDate: this.filterForm.controls.DateFrom.value,
+      endingDate: this.filterForm.controls.DateTo.value,
+      hashtags : this.filterForm.controls.Tags.value,
+      taggesUsers: this.filterForm.controls.TagsUsers.value
+    }
   }
 }
