@@ -1,18 +1,19 @@
 <div class="main-page">
     <div class="filter-container">
-        <h1>Filters</h1>
+      <!-- <h1>FakeLook </h1> -->
+      <app-side-bar></app-side-bar>
     </div>
-
     <div class="display-container">
         <nav class="header">
           <ul class="home-navigation">
-            <li><a routerLink="/Main-page/Map" routerLinkActive="active">Map</a></li>
-            <li><a routerLink="/Main-page/TimeLine" routerLinkActive="active">Time Line</a></li>
+            <li ><a class = "routing-buttons map-btn" routerLink="/Main-page/Map" routerLinkActive="active">&nbsp;&nbsp;&nbsp;Map&nbsp;&nbsp;&nbsp;</a></li>
+            <li  ><a class = "routing-buttons time-line-btn" routerLink="/Main-page/TimeLine" routerLinkActive="active">&nbsp;Time Line&nbsp;</a></li>
           </ul>
         </nav>
         <router-outlet></router-outlet>
-     
     </div>
 </div>
+
+
 
   

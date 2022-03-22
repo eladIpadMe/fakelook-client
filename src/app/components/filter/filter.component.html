@@ -1,0 +1,59 @@
+<body class = "body">
+    <form [formGroup]="filterForm" (ngSubmit)="submitPost()">
+        <label for="DateFrom">Date From</label>
+        <input formControlName="DateFrom" type="date" placeholder="YYYY-MM-DD"/>
+        <div class="error" *ngIf="
+        filterForm.controls['DateFrom'].touched &&
+        filterForm.controls['DateFrom'].invalid
+          ">
+          DateFrom not valid
+        </div>
+
+        <label for="DateTo">Date To</label>
+        <input formControlName="DateTo" type="date" />
+        <div class="error" *ngIf="
+            filterForm.controls['DateTo'].touched &&
+            filterForm.controls['DateTo'].invalid
+          ">
+          DateTo not valid
+        </div>
+
+        <label for="Publishers">Publishers</label>
+        <input formControlName="Publishers" type="text" />
+        <div class="error" *ngIf="
+            filterForm.controls['Publishers'].touched &&
+            filterForm.controls['Publishers'].invalid
+          ">
+          Publishers not valid
+        </div>
+
+
+        <label for="Tags">Tags</label>
+        <input formControlName="Tags" type="text" />
+        <div class="error" *ngIf="
+            filterForm.controls['Tags'].touched &&
+            filterForm.controls['Tags'].invalid
+          ">
+          Tags not valid
+        </div>
+
+
+        <label for="TagsUsers">Users</label>
+        <input formControlName="TagsUsers" type="text" />
+        <div class="error" *ngIf="
+            filterForm.controls['TagsUsers'].touched &&
+            filterForm.controls['TagsUsers'].invalid
+          ">
+          TagsUsers not valid
+        </div>
+
+
+
+
+        <div class="display-center">
+            <button type="submit" class="btn" >
+                Filter posts
+            </button>
+        </div>
+    </form>
+</body>

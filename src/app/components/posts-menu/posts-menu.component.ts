@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from 'src/app/models/post.model';
-import { PostsService } from '../../services/posts.service';
+import { PostService } from 'src/app/services/post.service';
+// import { PostsService } from '../../services/posts.service';
 
 @Component({
   selector: 'app-posts-menu',
@@ -11,7 +12,7 @@ import { PostsService } from '../../services/posts.service';
 export class PostsMenuComponent implements OnInit {
   
   
-  constructor(private postsService: PostsService) {}
+  constructor(private postsService: PostService) {}
   posts: Post[] = [];
 
   ngOnInit(): void {

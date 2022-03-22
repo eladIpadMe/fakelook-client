@@ -29,7 +29,7 @@ export class PostsDisplayComponent implements OnInit {
   newLike: boolean = true;
   userId: number = 0;
   likesCount = new Map();
-  //@Input() posts$!: Observable<Post[]>;
+  // @Input() posts$!: Observable<Post[]>;
   @Output() postDeleteEventEmitter = new EventEmitter<string>();
   
   ngOnInit(): void {

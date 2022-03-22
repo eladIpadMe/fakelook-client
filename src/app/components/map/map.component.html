@@ -1,5 +1,6 @@
 
-<app-posts-menu></app-posts-menu>
+<!-- <app-posts-menu></app-posts-menu> -->
+<div class = "map">
 <ac-map #map>
   <ac-layer
     *ngIf="entities$"
@@ -24,3 +25,5 @@
   [posts]="selectedPost"
   (closeDialogEmitter)="closeDialog()"
 ></app-posts-dialog>
+</div>
+
