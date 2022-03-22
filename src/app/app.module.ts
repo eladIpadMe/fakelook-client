@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 //import { MapComponent } from './components/map/map.component';
-import { PostsDialogComponent } from './components/posts-dialog/posts-dialog.component';
+//import { PostsDialogComponent } from './components/posts-dialog/posts-dialog.component';
 import { PostsDisplayComponent } from './components/posts-display/posts-display.component';
 import { PostsFormComponent } from './components/posts-form/posts-form.component';
 import { PostsMenuComponent } from './components/posts-menu/posts-menu.component';
@@ -24,6 +24,7 @@ import { AngularCesiumModule, AngularCesiumWidgetsModule } from 'angular-cesium'
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { FriendsComponent } from './components/friends/friends.component';
+import { MapModule } from './components/map.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,10 +35,10 @@ import { FriendsComponent } from './components/friends/friends.component';
     SignUpComponent,
     CreatePostComponent,
     FileUploadComponent,
-    MapComponent,
+    //MapComponent,
     TimelineComponent,
     MainPageComponent,
-    PostsDialogComponent,
+    //PostsDialogComponent,
     PostsDisplayComponent,
     PostsFormComponent,
     PostsMenuComponent
@@ -47,6 +48,7 @@ import { FriendsComponent } from './components/friends/friends.component';
     AppRoutingModule,
     FormsModule,
     RouterModule,
+    MapModule,
     AngularCesiumModule.forRoot(),
    AngularCesiumWidgetsModule,
      ReactiveFormsModule,

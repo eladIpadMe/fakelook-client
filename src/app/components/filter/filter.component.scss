@@ -1,6 +1,6 @@
 .body{
     position: relative;
-    top: -12rem;
+    top: 0;
 }
 
 form{
@@ -12,6 +12,7 @@ form *{
     letter-spacing: 0.5px;
     outline: none;
     border: none;
+    overflow: auto;
 }
 
 form h3{
