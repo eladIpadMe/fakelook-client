@@ -21,10 +21,15 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { MapComponent } from './components/map/map.component';
 import { AngularCesiumModule, AngularCesiumWidgetsModule } from 'angular-cesium';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { FriendsComponent } from './components/friends/friends.component';
 @NgModule({
   declarations: [
     AppComponent,
-    // StamComponent,
+    FilterComponent,
+    FriendsComponent,
+    SideBarComponent,
     LoginComponent,
     SignUpComponent,
     CreatePostComponent,

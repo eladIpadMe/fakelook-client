@@ -8,6 +8,9 @@ import { TimelineComponent } from './components/timeline/timeline.component';
 import { LoginComponent } from './components/login/login.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { MapComponent } from './components/map/map.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { FriendsComponent } from './components/friends/friends.component';
 
 //import { MapComponent } from './components/map/map.component';
 
@@ -16,6 +19,11 @@ const routes: Routes = [
   {path: 'Main-page', component: MainPageComponent, children: [
     {path: 'Map', component: MapComponent},
     {path: 'TimeLine', component: TimelineComponent},
+    //{path: '', redirectTo: 'Timeline', pathMatch: 'full'},
+  ]},
+  {path: 'Side-bar', component: SideBarComponent, children: [
+    {path: 'Filter', component: FilterComponent},
+    {path: 'Friends', component: FriendsComponent},
     //{path: '', redirectTo: 'Timeline', pathMatch: 'full'},
   ]},
   {path:`new-post`, component: CreatePostComponent},

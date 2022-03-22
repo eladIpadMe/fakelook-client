@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Like } from '../models/like.model';
 import { Post } from '../models/post.model';
@@ -17,7 +17,10 @@ export class PostService {
    }
 
   private url= environment.url;
-
+  private subs: Subscription[] = [];
+  ngOnDestroy(): void {
+    this.subs.forEach((sub) => sub.unsubscribe());
+  }
   createPost(post: Post): void {
 
     const currentUrl = `${this.url}Post/Post`;
@@ -33,14 +36,20 @@ export class PostService {
       );
   }
 
-  getPosts(): Observable<Post[]>{
-    //const currentUrl = `${this.url}Secret/`;  
+  // getPosts(): Observable<Post[]>{
+  //   const currentUrl = `${this.url}Secret/`;  
 
-  const headers = this.headers;
-    return this.http.get<Post[]>(`${this.url}Post`, {headers}).pipe(
-      map((res) => res));
-      //catchError((err) => of({msg: 'Your session has expired. Please register again'})));
+  // const headers = this.headers;
+  //   return this.http.get<Post[]>(`${this.url}Post`, {headers}).pipe(
+  //     map((res) => res));
+  //     catchError((err) => of({msg: 'Your session has expired. Please register again'})));
+  // }
+
+  getPosts(): Observable<Post[]> {
+    const currentUrl = `${this.url}Post`;
+    return this.http.get<Post[]>(currentUrl)
   }
+
 
   manageLike(userId: number, postId: number){
     const headers = this.headers;
@@ -55,4 +64,16 @@ export class PostService {
   // updatePost(post: Post){
   //   this.http.put<Post>(`${this.url}Post/${post.id}`, post);
   // }
+  deletePost(id: string): void {
+    const currentUrl = `${this.url}Post/Delete`;
+
+    this.http.delete<any>(currentUrl + "/" + id).subscribe((res) => {
+      //this.router.navigateByUrl('/Stam');
+      console.log("post " + id + "been deleted");
+      console.log(res);
+    },
+    (error) => console.log(error)
+    );
+   
+  }
 }

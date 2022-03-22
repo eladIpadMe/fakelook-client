@@ -9,13 +9,11 @@ export interface Post{
     imageSorce: string;
     x_position: number;
     y_position: number;
-    z_position: number; //| null
+    z_position: number | null;
     date: Date;
     user?: User;
     userId: number;
     likes?: Like[];
     comments?: Comment[];
-    hashtags?: Tag[];
-
-    
+    hashtags?: Tag[];   
 }

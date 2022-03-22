@@ -1,0 +1,25 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-side-bar',
+  templateUrl: './side-bar.component.html',
+  styleUrls: ['./side-bar.component.scss']
+})
+export class SideBarComponent implements OnInit {
+
+  constructor(private router: Router) { }
+  
+  ngOnInit(): void {
+  }
+
+
+  Selection1(){
+    // this.router.navigateByUrl('/Main-page');
+  }
+
+  Selection2(){
+    // this.router.navigateByUrl('/Main-page');
+  }
+}

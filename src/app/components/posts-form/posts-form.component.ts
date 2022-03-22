@@ -13,7 +13,7 @@ import { Post } from 'src/app/models/post.model';
 export class PostsFormComponent implements OnInit {
   @Output() submitEmitter: EventEmitter<Post> = new EventEmitter();
  
-post: Post = { description: "", imageSorce: "", x_Position: 0, y_Position: 0, z_Position: null, date: undefined, userId: 1}   
+post: Post = { description: "", imageSorce: "", x_position: 0, y_position: 0, z_position: 0, date: new Date(), userId: 1}   
 
 
   file: any;
@@ -32,10 +32,10 @@ post: Post = { description: "", imageSorce: "", x_Position: 0, y_Position: 0, z_
       console.log(`location is not supported`);
     }
     navigator.geolocation.getCurrentPosition((postion)=> {
-      this.post.x_Position = postion.coords.longitude
-      this.post.y_Position = postion.coords.latitude
+      this.post.x_position = postion.coords.longitude
+      this.post.y_position = postion.coords.latitude
       // if(postion.coords.altitude !== null)
-      this.post.z_Position = 3620170.526302757
+      this.post.z_position = 3620170.526302757
       // postion.coords.altitude לטפל בזה בהמשך
       // else  this.post.z_Position = 0
       this.post.date = new Date;
