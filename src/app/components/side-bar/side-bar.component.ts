@@ -9,17 +9,20 @@ import { Router } from '@angular/router';
 })
 export class SideBarComponent implements OnInit {
 
+  showLeft: boolean = true;
+  showRight: boolean = false;
   constructor(private router: Router) { }
   
   ngOnInit(): void {
   }
 
 
-  Selection1(){
-    // this.router.navigateByUrl('/Main-page');
+  selectedSideBarLeft(){
+    this.showLeft = true;
+    this.showRight = false;
   }
 
-  Selection2(){
-    // this.router.navigateByUrl('/Main-page');
-  }
+  selectedSideBarRight(){
+    this.showLeft = false;
+    this.showRight = true;  }
 }

@@ -18,14 +18,21 @@ const routes: Routes = [
 
   {path: 'Main-page', component: MainPageComponent, children: [
     {path: 'Map', component: MapComponent},
-    {path: 'TimeLine', component: TimelineComponent},
-    //{path: '', redirectTo: 'Timeline', pathMatch: 'full'},
+    {path: 'TimeLine', component: TimelineComponent}, 
+    {path: '', redirectTo: 'Map', pathMatch: 'full'},
+    {path: `**`, component: LoginComponent}
   ]},
-  {path: 'Side-bar', component: SideBarComponent, children: [
-    {path: 'Filter', component: FilterComponent},
-    {path: 'Friends', component: FriendsComponent},
+  
+
+  // {path: 'Side-bar', component: SideBarComponent, children: [
+  //   {path: 'Filter', component: FilterComponent},
+  //   {path: 'Friends', component: FriendsComponent},
+  //   {path: '', redirectTo: 'Filter', pathMatch: 'full'}]},
+  // {path: 'Side-bar', component: SideBarComponent, children: [
+  //   {path: 'Filter', component: FilterComponent},
+  //   {path: 'Friends', component: FriendsComponent},
     //{path: '', redirectTo: 'Timeline', pathMatch: 'full'},
-  ]},
+  // ]},
   {path:`new-post`, component: CreatePostComponent},
   {path: `SignUp`, component: SignUpComponent},
   {path: `Login`, component: LoginComponent},

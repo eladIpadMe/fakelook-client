@@ -64,19 +64,20 @@ export class MapComponent implements OnInit {
   }
 
   convertPost(post: Post): AcEntity {
-    console.log("ma ze aharaaaa hazeeee2")
-    console.log( {
+    console.log("nichnasti")
+    const locationCords =  console.log( "x position" + post.x_Position);
+   console.log({
       id: post.id,
       description: post.description,
       imageSorce: post.imageSorce,
-      location: Cesium.Cartesian3.fromDegrees(post.x_position, post.y_position),
+      location: Cesium.Cartesian3.fromDegrees(post.x_Position, post.y_Position),
       isShow: true,
     });
     return {
       id: post.id,
       description: post.description,
       imageSorce: post.imageSorce,
-      location: Cesium.Cartesian3.fromDegrees(post.x_position, post.y_position),
+      location: Cesium.Cartesian3.fromDegrees(post.x_Position, post.y_Position),
       isShow: true,
     };
   }

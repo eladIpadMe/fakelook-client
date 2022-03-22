@@ -7,9 +7,9 @@ export interface Post{
     id?: number;
     description: string;
     imageSorce: string;
-    x_position: number;
-    y_position: number;
-    z_position: number | null;
+    x_Position: number;
+    y_Position: number;
+    z_Position: number | null;
     date: Date;
     user?: User;
     userId: number;
