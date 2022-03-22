@@ -29,6 +29,7 @@ export class PostsDisplayComponent implements OnInit {
   newLike: boolean = true;
   userId: number = 0;
   likesCount = new Map();
+  booleanLikeArray: Boolean[] = [];
   // @Input() posts$!: Observable<Post[]>;
   @Output() postDeleteEventEmitter = new EventEmitter<string>();
   
@@ -60,8 +61,11 @@ export class PostsDisplayComponent implements OnInit {
             }
           }
           console.log(like);
-          if(like.userId === this.userId && like.isActive === true){
+          if(like.userId === this.userId ){
+            this.booleanLikeArray[<number>p.id] = false;
+            if(like.isActive === true){
             this.likedPost[<number>p.id] = true;
+            }
           }
         });
 
@@ -88,6 +92,13 @@ export class PostsDisplayComponent implements OnInit {
   highlightLike(post: Post){
     this.likedPost[<number>post.id] = !this.likedPost[<number>post.id];
     this.postService.manageLike(<number>post.id, this.userId);
+    if(this.likedPost[<number>post.id] === true){
+      this.likesCount.set(post.id, this.likesCount.get(post.id) + 1);
+    }
+    else{
+      this.likesCount.set(post.id, this.likesCount.get(post.id) - 1);
+    }
+    
     // console.log("the liked post is: ");
     // console.log(post);
     // if(post.likes){
@@ -127,8 +138,8 @@ export class PostsDisplayComponent implements OnInit {
 
   }
 
-  blockUser(){
-
+  blockUser(post: Post){
+    this.commentsPressed[<number>post.id] = false;
   }
 
   showLikesList(post: Post){
@@ -145,12 +156,11 @@ export class PostsDisplayComponent implements OnInit {
 
 
   showComments(post: Post){
+    this.commentsPressed[<number>post.id] = !this.commentsPressed[<number>post.id];
 
-    this.commentsPressed[<number>post.id] = !this.commentsPressed[<number>post.id] ;
-    //this.input.nativeElement.focus();
-    console.log(document.getElementById("stam"));
-    document.getElementById("input")?.focus();
-
+  }
+  findIfCommentPressed(post: Post): boolean{
+    return this.commentsPressed[<number>post.id];
   }
   exitLikesScreen(post: Post){
     this.dispalyLikesPressed[<number>post.id] = false;

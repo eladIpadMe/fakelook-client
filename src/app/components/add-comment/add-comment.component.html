@@ -1,0 +1,29 @@
+<div class="add-comment-page">
+    <div class="add-comment-container">
+        <input type="text" class="content" placeholder="Enter content.." [(ngModel)]="content")]>
+        <select name="users" class="user">
+        <option value="" *ngFor="let user of users">{{ user.userName }}</option>
+        </select>
+        <!-- <select name="hashtags" class="hashtags">
+            <option value="" *ngFor="let hashtag of hashtags">{{ hashtag.contant }}</option>
+            </select> -->
+            <mat-form-field class="example-chip-list" appearance="fill">
+                <mat-label>Favorite Fruits</mat-label>
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                  <mat-chip *ngFor="let fruit of fruits" (removed)="remove(fruit)">
+                    {{fruit.name}}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="New fruit..."
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+              </mat-form-field>  
+        <input type="text" class="content" hashtags="Enter hashtags.." [(ngModel)]="content")]>
+        <!-- <button (click)="addComment()">Add</button> -->
+    </div>
+</div>

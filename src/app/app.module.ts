@@ -25,6 +25,10 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { MapModule } from './components/map.module';
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
+import {MatChipInput, MatChipsModule, MAT_CHIPS_DEFAULT_OPTIONS} from '@angular/material/chips';
+import { MatInputModule} from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon'
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,9 +45,14 @@ import { MapModule } from './components/map.module';
     //PostsDialogComponent,
     PostsDisplayComponent,
     PostsFormComponent,
-    PostsMenuComponent
+    PostsMenuComponent,
+    AddCommentComponent
   ],
   imports: [
+    MatIconModule,
+    MatInputModule,
+    MatChipInput,
+    MatChipsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

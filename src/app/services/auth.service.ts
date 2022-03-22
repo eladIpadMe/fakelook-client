@@ -32,7 +32,7 @@ export class AuthService implements OnDestroy {
       this.http.post<any>(currentUrl, user).subscribe((res) => {
         this.setToken(res.token, res.userId);
         console.log(res);
-        this.router.navigateByUrl('/Main-page');
+        this.router.navigateByUrl('/addComment');
       },
       (error) => alert("Invalid"))
     );

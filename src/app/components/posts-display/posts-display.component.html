@@ -70,7 +70,7 @@
           class="comment-btn-logo"
         />
       </button>
-      <button class="block-btn" (click)="blockUser()">
+      <button class="block-btn" (click)="blockUser(post)">
         Block<img
           src="..\..\..\assets\block-user-logo.png"
           alt=""
@@ -80,7 +80,11 @@
       <!-- <button class="btn" (click)="deletePost(post.id)">Delete</button> -->
     </div>
 
+    <div *ngIf="findIfCommentPressed(post)">
+      <app-add-comment [post] = "post"></app-add-comment>
+    </div>
     <div class="comments-container" *ngIf="checkIfDisplayComments(post)">
+
       <form action="">
         <input
           id="stam"
