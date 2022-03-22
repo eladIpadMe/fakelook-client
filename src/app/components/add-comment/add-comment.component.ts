@@ -4,11 +4,7 @@ import { Tag } from 'src/app/models/tag.model';
 import { User } from 'src/app/models/user.model';
 import { HashtagService } from 'src/app/services/hashtag.service';
 import { UserService } from 'src/app/services/user.service';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material/chips';
-export interface Fruit {
-  name: string;
-}
+
 
 @Component({
   selector: 'app-add-comment',
@@ -16,9 +12,7 @@ export interface Fruit {
   styleUrls: ['./add-comment.component.scss']
 })
 export class AddCommentComponent implements OnInit {
-  addOnBlur = true;
-  readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  fruits: Fruit[] = [{name: 'Lemon'}, {name: 'Lime'}, {name: 'Apple'}];
+
 
  
  
@@ -52,26 +46,7 @@ export class AddCommentComponent implements OnInit {
   (error)=> console.log(error));
   }
 
-  add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
-
-    // Add our fruit
-    if (value) {
-      this.fruits.push({name: value});
-    }
-
-    // Clear the input value
-    event.chipInput!.clear();
-  }
-
-  remove(fruit: Fruit): void {
-    const index = this.fruits.indexOf(fruit);
-
-    if (index >= 0) {
-      this.fruits.splice(index, 1);
-    }
-  }
-
+  
   // addComment(){
   //   const comment: Comment = {
   //     content: this.content,
