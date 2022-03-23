@@ -10,6 +10,7 @@ import { Tag } from '../models/tag.model';
 export class HashtagService {
   //private url= `${environment.url}Tag`;
   headers?: HttpHeaders;
+  url= `${environment.url}Tag`;
   constructor(private http: HttpClient) { 
     this.headers = new HttpHeaders({
       Authorization: 'Bearer ' + sessionStorage.getItem('token'),
@@ -18,11 +19,14 @@ export class HashtagService {
 
    getAllTags(): Observable<Tag[]>{
     
-  const url= `${environment.url}Tag`;
   const headers = this.headers;
-  return this.http.get<Tag[]>(url, {headers});
-
+  return this.http.get<Tag[]>(this.url, {headers});
   } 
+
+  addTag(tag: Tag): Observable<Tag>{
+    const headers = this.headers;
+   return this.http.post<Tag>(this.url, {headers});
+  }
 }
 
   

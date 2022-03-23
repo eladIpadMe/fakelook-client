@@ -15,6 +15,8 @@ import { TimelineComponent } from './timeline/timeline.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { FilterComponent } from './filter/filter.component';
 import { FriendsComponent } from './friends/friends.component';
+import { UsersChipComponent } from './users-chip/users-chip.component';
+import { TagsChipComponent } from './tags-chip/tags-chip.component';
 // import { MapComponent } from './components/map/map.component';
 // import { PostsService } from './services/posts.service';
 // import { PostsDisplayComponent } from './components/posts-display/posts-display.component';
@@ -27,6 +29,8 @@ import { FriendsComponent } from './friends/friends.component';
   declarations: [
     MapComponent,
     PostsDialogComponent,
+    //UsersChipComponent,
+    //TagsChipComponent,
     //PostsDisplayComponent,
     //PostsFormComponent,
     //PostsMenuComponent,

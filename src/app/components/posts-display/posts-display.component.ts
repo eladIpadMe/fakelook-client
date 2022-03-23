@@ -30,6 +30,8 @@ export class PostsDisplayComponent implements OnInit {
   userId: number = 0;
   likesCount = new Map();
   booleanLikeArray: Boolean[] = [];
+
+  addCommentPresed: boolean = false;
   // @Input() posts$!: Observable<Post[]>;
   @Output() postDeleteEventEmitter = new EventEmitter<string>();
   
@@ -38,8 +40,8 @@ export class PostsDisplayComponent implements OnInit {
     this.userId = Number(sessionStorage.getItem('id'));
     this.userService.getUserById(this.userId).subscribe((user)=> {
       this.user = user;
-      console.log(`User is: `);
-      console.log(this.user);
+      //console.log(`User is: `);
+      //console.log(this.user);
     },
     (error) => console.log(error));
 
@@ -49,7 +51,7 @@ export class PostsDisplayComponent implements OnInit {
   
     this.postService.getPosts().subscribe((posts) =>{
       this.postsD = posts;
-      console.log(this.posts);
+      //console.log(this.posts);
       this.postsD.forEach(p =>{
         p.likes?.forEach(like => {
           if(like.isActive){
@@ -60,7 +62,7 @@ export class PostsDisplayComponent implements OnInit {
               this.likesCount.set(p.id, 1);
             }
           }
-          console.log(like);
+          //console.log(like);
           if(like.userId === this.userId ){
             this.booleanLikeArray[<number>p.id] = false;
             if(like.isActive === true){
@@ -154,7 +156,11 @@ export class PostsDisplayComponent implements OnInit {
     return this.commentsPressed[<number>post.id];
   }
 
-
+  ShowCommentComponent(): boolean{
+    this.addCommentPresed = !this.addCommentPresed;
+    console.log(this.addCommentPresed);
+    return this.addCommentPresed;
+  }
   showComments(post: Post){
     this.commentsPressed[<number>post.id] = !this.commentsPressed[<number>post.id];
 
@@ -171,7 +177,7 @@ export class PostsDisplayComponent implements OnInit {
   }
   addComment(event: any, post: Post){
     let newCommentContent = event.target.value;
-    console.log(newCommentContent);
+    //console.log(newCommentContent);
     event.target.value = "";
     let newComment: Comment= {
       content: newCommentContent,

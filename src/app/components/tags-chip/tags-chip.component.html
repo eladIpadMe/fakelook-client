@@ -1,0 +1,29 @@
+<div>
+    <mat-form-field class="hashtag-chip-list" appearance="fill">
+      <mat-label>Hashtags</mat-label>
+      
+      <mat-chip-list #hashtagList aria-label="Hashtag-selection">
+        <mat-chip
+          *ngFor="let hashtag of hashtags"
+          (removed)="removeHashtag(hashtag)">
+          {{hashtag}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+        <input
+          [placeholder]="placeHolder"
+          #hashtagInput
+          [formControl]="hashtagCtrl"
+          [matAutocomplete]="auto"
+          [matChipInputFor]="hashtagList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="addHashtag($event)">
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedHashtags($event)">
+        <mat-option *ngFor="let hashtag of filteredHashtags | async" [value]="hashtag">
+          {{hashtag}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>

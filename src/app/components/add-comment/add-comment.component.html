@@ -1,19 +1,8 @@
 <div class="add-comment-page">
     <div class="add-comment-container">
-        <input type="text" class="content" placeholder="Enter content.." [(ngModel)]="content">
-        <select name="users" class="user">
-        <option value="" *ngFor="let user of users">{{ user.userName }}</option>
-        </select>
-        <!-- <select name="hashtags" class="hashtags">
-            <option value="" *ngFor="let hashtag of hashtags">{{ hashtag.contant }}</option>
-            </select> -->
-            <mat-chip-list aria-label="Fish selection">
-              <mat-chip>One fish</mat-chip>
-              <mat-chip>Two fish</mat-chip>
-              <mat-chip color="primary" selected>Primary fish</mat-chip>
-              <mat-chip color="accent" selected>Accent fish</mat-chip>
-            </mat-chip-list>
-              <input type="text" class="content" hashtags="Enter hashtags.." [(ngModel)]="content">
-        <!-- <button (click)="addComment()">Add</button> -->
-    </div>
+      <input type="text" class="content" placeholder="Enter content.." [(ngModel)]="content">
+      <app-users-chip [placeHolder]="placeholder('Tag Friends')" (usersTaggedInComment)="updateUsersTagged($event)"></app-users-chip>
+      <app-tags-chip [placeHolder]="placeholder('Hashtags')" (tagsChosen)="updateTagesChosen($event)"></app-tags-chip>
+      <button (click)="addComment()">Add</button>
+  </div>
 </div>

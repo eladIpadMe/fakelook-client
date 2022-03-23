@@ -61,7 +61,7 @@
       </button>
       <button
         class="comment-btn"
-        (click)="showComments(post)"
+        (click)="ShowCommentComponent()"
         [class.highliteCommentBtn]="checkIfDisplayComments(post)"
       >
         Comment<img
@@ -79,13 +79,16 @@
       </button>
       <!-- <button class="btn" (click)="deletePost(post.id)">Delete</button> -->
     </div>
-
-    <div *ngIf="findIfCommentPressed(post)">
+    <div *ngIf = "addCommentPresed">
       <app-add-comment [post] = "post"></app-add-comment>
     </div>
+
+    <!-- <div *ngIf="findIfCommentPressed(post)">
+      
+    </div> -->
     <div class="comments-container" *ngIf="checkIfDisplayComments(post)">
 
-      <form action="">
+      <!-- <form action="">
         <input
           id="stam"
           type="text"
@@ -107,7 +110,7 @@
             class="hashtag-logo"
           />
         </button>
-      </form>
+      </form> -->
 
       <!-- (keydown.enter)="addComent($event)"> -->
 
@@ -117,14 +120,14 @@
             {{ comment.user?.firstName }} {{ comment.user?.lastName }}
           </div>
           <div class="comment-content">{{ comment.content }}</div>
-          <div *ngIf="comment.hashtags !== null">
-            <span *ngFor="let hashtag of comment.hashtags">
-              {{ hashtag.contant }}
+          <div *ngIf="comment.tags !== null">
+            <span *ngFor="let hashtag of comment.tags">
+              {{ hashtag.content }}
             </span>
           </div>
-          <div *ngIf="comment.usersTagged !== null">
-            <span *ngFor="let userTagged of comment.usersTagged">
-              {{ userTagged.user.firstName }} {{ userTagged.user.lastName }}
+          <div *ngIf="comment.userTaggedComment !== null">
+            <span *ngFor="let userTagged of comment.userTaggedComment">
+              {{ userTagged.user?.firstName }} {{ userTagged.user?.lastName }}
             </span>
           </div>
         </div>

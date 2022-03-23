@@ -4,5 +4,4 @@ import { User } from "./user.model";
 
 export interface UserTaggedPost{
     userId: number;
-    postId: number;
 }

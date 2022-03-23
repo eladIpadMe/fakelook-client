@@ -11,6 +11,10 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class FilterComponent implements OnInit {
   filteredPosts: Post[] = [];
+  publishers: string[];
+  usersTagged: string[];
+  hashTags: string[];
+
   constructor(private postService: PostService) { }
   filterForm = new FormGroup({
     DateFrom: new FormControl('', [
@@ -29,7 +33,7 @@ export class FilterComponent implements OnInit {
   }
 
   checkInputFormValidity(array: any){
-    if(array === ""){
+    if(array === "" || array === ""){
       return null;
     }
     else
@@ -37,11 +41,11 @@ export class FilterComponent implements OnInit {
   }
   submitPost(){
     let postFilter: PostsFilter ={
-      publishers : this.checkInputFormValidity(this.filterForm.controls.Publishers.value),
-      startingDate: this.filterForm.controls.DateFrom.value,
-      endingDate: this.filterForm.controls.DateTo.value,
-      hashtags : this.checkInputFormValidity(this.filterForm.controls.Tags.value),
-      taggesUsers: this.checkInputFormValidity(this.filterForm.controls.TagsUsers.value)
+      publishers : (this.checkInputFormValidity(this.publishers)) ,
+      startingDate: this.checkInputFormValidity(this.filterForm.controls.DateFrom.value),
+      endingDate: this.checkInputFormValidity(this.filterForm.controls.DateTo.value),
+      hashtags : this.checkInputFormValidity(this.hashTags),
+      taggesUsers: this.checkInputFormValidity(this.usersTagged)
     }
     console.log("filter is: ");
     console.log(postFilter);
@@ -53,6 +57,18 @@ export class FilterComponent implements OnInit {
     (error) => console.log(error))
   }
 
+  placeholder(placeHolder: string):string{
+    return placeHolder;
+  }
   
-  
+  addPublishersFilter(publishers: string[]){
+    this.publishers = publishers;
+  }
+
+  addUserTaggedFilter(usersTagged: string[]){
+    this.usersTagged = usersTagged;
+  }
+  addTaggesFilter(taggs: string[]){
+    this.hashTags = taggs;
+  }
 }
