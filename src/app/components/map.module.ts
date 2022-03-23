@@ -9,12 +9,12 @@ import { PostsFormComponent } from './posts-form/posts-form.component';
 import { PostsMenuComponent } from './posts-menu/posts-menu.component';
 import { PostsDialogComponent } from './posts-dialog/posts-dialog.component';
 import { FormsModule } from '@angular/forms';
-import { PostsService } from '../services/posts.service';
 import { MainPageComponent } from './main-page/main-page.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { FilterComponent } from './filter/filter.component';
 import { FriendsComponent } from './friends/friends.component';
+// import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 // import { MapComponent } from './components/map/map.component';
 // import { PostsService } from './services/posts.service';
 // import { PostsDisplayComponent } from './components/posts-display/posts-display.component';
@@ -27,6 +27,7 @@ import { FriendsComponent } from './friends/friends.component';
   declarations: [
     MapComponent,
     PostsDialogComponent,
+    // ForgotPasswordComponent,
     //PostsDisplayComponent,
     //PostsFormComponent,
     //PostsMenuComponent,
@@ -44,7 +45,6 @@ import { FriendsComponent } from './friends/friends.component';
     AngularCesiumWidgetsModule,
     HttpClientModule,
     FormsModule,
-  ],
-  providers: [PostsService],
+  ]
 })
 export class MapModule {}

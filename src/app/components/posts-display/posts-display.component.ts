@@ -47,6 +47,7 @@ export class PostsDisplayComponent implements OnInit {
   getPosts(){
   
     this.postService.getPosts().subscribe((posts) =>{
+      debugger;
       this.postsD = posts;
       console.log(this.posts);
       this.postsD.forEach(p =>{

@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { User } from '../models/user.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +21,23 @@ export class UserService {
     return this.http.get<User>(this.usersUrl+'/'+id, {headers});
   }
 
-  updateUser(user: User): Observable<User>{
+  updateUser(user: User): void{
     const headers = this.headers;
     let httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
-    return this.http.put<User>(this.usersUrl, user, httpOptions);
+    this.http.put<User>(this.usersUrl, user, httpOptions).subscribe((res) => {
+    },
+    (error) => console.log(error)
+    ); 
+  }
+
+  getUserIdByUserName(userName: String): Observable<number> {
+    const headers = this.headers;
+    let httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    }
+    return this.http.get<number>(this.usersUrl+ '/GetUserIdByUserName?userName=' + userName)
+ 
   }
 }

@@ -15,5 +15,6 @@ export interface Post{
     userId: number;
     likes?: Like[];
     comments?: Comment[];
-    hashtags?: Tag[];   
+    hashtags?: Tag[]; 
+    isShow: false;  
 }

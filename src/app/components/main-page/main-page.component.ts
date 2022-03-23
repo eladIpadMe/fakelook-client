@@ -9,8 +9,14 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class MainPageComponent implements OnInit {
 
   constructor() { }
+  addPost: boolean = false;
 
   ngOnInit(): void {
   }
-
+  AddPostBtn(){
+    this.addPost = !this.addPost
+  }
+  SignOut(){
+    sessionStorage.removeItem('token'); 
+  }
 }

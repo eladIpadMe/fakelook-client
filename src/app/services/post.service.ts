@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, Subscription } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, Subject, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Like } from '../models/like.model';
 import { Post } from '../models/post.model';
+import { PostsFilter } from '../models/postsfilter.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,16 @@ export class PostService {
       Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     });
    }
-
+  private postsSubject = new BehaviorSubject<Post[]>([]);
   private url= environment.url;
   private subs: Subscription[] = [];
-  ngOnDestroy(): void {
-    this.subs.forEach((sub) => sub.unsubscribe());
-  }
+  private post1: Post[] = [];
+  // ngOnInit(): void {
+  //   const currentUrl = `${this.url}Post`;
+  //   var  tempPosts = this.http.get<Post[]>(currentUrl).subscribe;
+  //   this.tempPosts$.subscribe(event => this.event = event);
+  //   this.postsSubject = new BehaviorSubject<Post[]>(tempPosts)
+  // }
   createPost(post: Post): void {
 
     const currentUrl = `${this.url}Post/Post`;
@@ -37,18 +42,28 @@ export class PostService {
   }
 
   // getPosts(): Observable<Post[]>{
-  //   const currentUrl = `${this.url}Secret/`;  
+      
 
   // const headers = this.headers;
   //   return this.http.get<Post[]>(`${this.url}Post`, {headers}).pipe(
   //     map((res) => res));
-  //     catchError((err) => of({msg: 'Your session has expired. Please register again'})));
+  //     catchError((err) => of({msg: 'Your session has expired. Please register again'}));
   // }
 
   getPosts(): Observable<Post[]> {
     const currentUrl = `${this.url}Post`;
-    return this.http.get<Post[]>(currentUrl)
+    const headers = this.headers;
+    this.subs.push(
+      this.http
+        .get<Post[]>(`${this.url}Post`, {headers})
+        .subscribe((res) => this.postsSubject.next(res)));
+    return this.postsSubject;
   }
+
+  // getPosts(): Observable<Post[]> {
+  //   const currentUrl = `${this.url}Post`;
+  //   return this.http.get<Post[]>(currentUrl)
+  // }
 
 
   manageLike(userId: number, postId: number){
@@ -75,5 +90,12 @@ export class PostService {
     (error) => console.log(error)
     );
    
+  }
+
+  filterPosts(postFilter: PostsFilter){
+    const currentUrl = `${this.url}Post/Filter`;
+    this.subs.push(this.http.post<Post[]>(currentUrl, postFilter,{headers:this.headers}).subscribe((res)=>{
+      this.postsSubject.next([...res]);            
+    }))
   }
 }

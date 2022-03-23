@@ -6,7 +6,7 @@ import {
   ActionType
 } from 'angular-cesium';
 import { Observable } from 'rxjs';
-import { mergeMap, map } from 'rxjs/operators';
+import { mergeMap, map, pairwise,tap } from 'rxjs/operators';
 import { Post } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post.service';
 // import { PostService } from 'src/app/services/post.service';
@@ -18,7 +18,7 @@ import { PostService } from 'src/app/services/post.service';
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
-  providers: [ViewerConfiguration, PostService],
+  providers: [ViewerConfiguration],
 })
 export class MapComponent implements OnInit {
   constructor(
@@ -40,20 +40,31 @@ export class MapComponent implements OnInit {
     };
   }
   entities$!: Observable<AcNotification>;
+  entities!: Observable<Post[]>;
   selectedPost!: Post;
   showDialog = false;
   Cesium = Cesium;
+  flag = false;
   ngOnInit(): void {
-    this.entities$ = this.postService.getPosts().pipe(
-      map((posts) => {
-        return posts.map((post) => ({
-          id: this.validationOfId(post), // validation - not undefined
-          actionType: ActionType.ADD_UPDATE, //: ActionType.DELETE, post.isShow ?
-          entity: this.convertPost(post),
-        }));
-      }),
-      mergeMap((entity) => entity)
-    );
+      this.entities$ = this.postService.getPosts().pipe(
+        pairwise(),
+        map((posts) => {
+          const combine = posts[0].concat(posts[1])
+          return combine.map((post) => ({
+            id: this.validationOfId(post),
+            actionType: this.getActionType(post,posts[1]),
+            entity: this.convertPost(post),
+          }));
+        }),
+        mergeMap((post) => post)
+      );
+  }
+  getActionType(post: Post, newPosts: Post[]): ActionType {
+    let action;
+    newPosts.find((p) => p.id === post.id)
+      ? (action = ActionType.ADD_UPDATE)
+      : (action = ActionType.DELETE);
+    return action;
   }
   showFullPost(post: Post): void {
     this.showDialog = true;
@@ -64,15 +75,15 @@ export class MapComponent implements OnInit {
   }
 
   convertPost(post: Post): AcEntity {
-    console.log("nichnasti")
-    const locationCords =  console.log( "x position" + post.x_Position);
-   console.log({
-      id: post.id,
-      description: post.description,
-      imageSorce: post.imageSorce,
-      location: Cesium.Cartesian3.fromDegrees(post.x_Position, post.y_Position),
-      isShow: true,
-    });
+  //   console.log("nichnasti")
+  //   const locationCords =  console.log( "x position" + post.x_Position);
+  //  console.log({
+  //     id: post.id,
+  //     description: post.description,
+  //     imageSorce: post.imageSorce,
+  //     location: Cesium.Cartesian3.fromDegrees(post.x_Position, post.y_Position),
+  //     isShow: true,
+  //   });
     return {
       id: post.id,
       description: post.description,

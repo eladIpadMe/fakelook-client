@@ -12,19 +12,19 @@ import { PostService } from 'src/app/services/post.service';
 export class PostsMenuComponent implements OnInit {
   
   
-  constructor(private postsService: PostService) {}
+  constructor(private postService: PostService) {}
   posts: Post[] = [];
 
   ngOnInit(): void {
-    this.postsService.getPosts().subscribe(
-      (posts) => (this.posts = posts),
-      (error) => console.log(error)
-    );
+    // this.postService.getPosts().subscribe(
+    //   (posts) => (this.posts = posts),
+    //   (error) => console.log(error)
+    // );
   }
   onNewPost(post: Post): void {
-    this.postsService.createPost(post);
+    this.postService.createPost(post);
   }
   onPostDelete(id: string): void {
-    this.postsService.deletePost(id);
+    this.postService.deletePost(id);
   }
 }

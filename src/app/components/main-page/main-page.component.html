@@ -1,8 +1,13 @@
+
+
 <div class="main-page">
     <div class="filter-container">
       <app-side-bar></app-side-bar>
     </div>
     <div class="display-container">
+      <button class="routing-buttons"  (click)="AddPostBtn()"> Add Post</button>
+  <div *ngIf="addPost"><app-posts-menu class = "stam"></app-posts-menu></div>
+  <li  ><a class = "routing-buttons time-line-btn" routerLink="/Login" routerLinkActive="active" (click)="SignOut()">&nbsp;LogOut&nbsp;</a></li>
         <nav class="header">
           <ul class="home-navigation">
             <li ><a class = "routing-buttons map-btn" routerLink="/Main-page/Map" routerLinkActive="active">&nbsp;&nbsp;&nbsp;Map&nbsp;&nbsp;&nbsp;</a></li>

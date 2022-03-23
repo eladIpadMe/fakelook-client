@@ -6,6 +6,6 @@ export interface PostsFilter{
     publishers: User[];
     startingDate?: Date;
     endingDate?: Date;
-    hashtags: Tag[];
-    taggesUsers: UserTaggedPost[];
+    hashtags?: Tag[];
+    taggesUsers?: UserTaggedPost[];
 }

@@ -13,12 +13,11 @@ import { Post } from 'src/app/models/post.model';
 export class PostsFormComponent implements OnInit {
   @Output() submitEmitter: EventEmitter<Post> = new EventEmitter();
  
-post: Post = { description: "", imageSorce: "", x_Position: 0, y_Position: 0, z_Position: 0, date: new Date(), userId: 1}   
+post: Post = { description: "", imageSorce: "", x_Position: 0, y_Position: 0, z_Position: 0, date: new Date(), userId: 1, isShow: false}   
 
 
   file: any;
   Cesium = Cesium;
-  
   constructor() {}
 
   ngOnInit(): void {}

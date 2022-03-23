@@ -15,7 +15,6 @@ import { PostsDisplayComponent } from './components/posts-display/posts-display.
 import { PostsFormComponent } from './components/posts-form/posts-form.component';
 import { PostsMenuComponent } from './components/posts-menu/posts-menu.component';
 import { RouterModule } from '@angular/router';
-import { CreatePostComponent } from './components/create-post/create-post.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { LoginComponent } from './components/login/login.component';
@@ -25,19 +24,22 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { MapModule } from './components/map.module';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     FilterComponent,
     FriendsComponent,
+    ForgotPasswordComponent,
     SideBarComponent,
     LoginComponent,
     SignUpComponent,
-    CreatePostComponent,
     FileUploadComponent,
     //MapComponent,
     TimelineComponent,
     MainPageComponent,
+    FilterComponent,
     //PostsDialogComponent,
     PostsDisplayComponent,
     PostsFormComponent,
