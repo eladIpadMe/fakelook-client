@@ -1,5 +1,6 @@
 <div class="add-comment-page">
     <div class="add-comment-container">
+      <button mat-button (click)="onNoClick()" class="exit-btn-add-comment"><img src="..\..\..\assets\exit-btn-logo.png" alt="exit button" class="exit-img"></button>
       <input type="text" class="content" placeholder="Enter content.." [(ngModel)]="content">
       <app-users-chip [placeHolder]="placeholder('Tag Friends')" (usersTaggedInComment)="updateUsersTagged($event)"></app-users-chip>
       <app-tags-chip [placeHolder]="placeholder('Hashtags')" (tagsChosen)="updateTagesChosen($event)"></app-tags-chip>

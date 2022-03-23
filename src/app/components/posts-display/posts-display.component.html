@@ -14,6 +14,9 @@
     <div class="date-posted">{{ post.date | date: "short" }}</div>
     <div>{{ post.description }}</div>
     <div><img src="{{ post.imageSorce }}" alt="{{ post.description }}" /></div>
+    <div>
+      <button mat-raised-button (click)="openDialog(post)">Add Comment</button>
+    </div>
 
     <div class="display-likes" *ngIf="checkIfDisplayLikesPressed(post)">
       <div class="likes-container">

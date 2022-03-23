@@ -1,18 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit,Inject } from '@angular/core';
 import { Post } from 'src/app/models/post.model';
 import { Tag } from 'src/app/models/tag.model';
 import { Comment } from 'src/app/models/comment.model';
 import { HashtagService } from 'src/app/services/hashtag.service';
-import { UserService } from 'src/app/services/user.service';
-
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {ElementRef, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {map, Observable, startWith} from 'rxjs';
 import { UserTaggedComment } from 'src/app/models/userTaggedComment.model';
 import { CommentService } from 'src/app/services/comment.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogData, PostsDisplayComponent } from '../posts-display/posts-display.component';
+//import { MatDialog } from '@angular/material';
 
 
 
@@ -45,7 +40,10 @@ export class AddCommentComponent implements OnInit {
   hashtags: Tag[]= [];
   content: string= "";
   @Input() post?: Post;
-  constructor(private commentService: CommentService, private hashtagService: HashtagService) {
+  constructor(private commentService: CommentService,
+     private hashtagService: HashtagService,
+     public dialogRef: MatDialogRef<PostsDisplayComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,) {
     this.id = Number(sessionStorage.getItem('id'))
    }
     
@@ -83,12 +81,17 @@ export class AddCommentComponent implements OnInit {
     const newComment: Comment = {
       content: this.checkValidancy(this.content),
       userId: this.id,
-      postId: <number>this.post?.id,
+      postId: <number>this.data.post.id,
+      //<number>this.post?.id,
       tags: this.checkValidancy(this.hashtags),
       userTaggedComment: this.checkValidancy(this.userTagged)
     }
     console.log(newComment);
     this.commentService.addComment(newComment);
+  }
+
+  onNoClick(){
+    this.dialogRef.close();
   }
 }
   
