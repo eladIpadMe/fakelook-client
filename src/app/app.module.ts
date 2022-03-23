@@ -27,6 +27,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { TagsChipComponent } from './components/tags-chip/tags-chip.component';
 import { UsersChipComponent } from './components/users-chip/users-chip.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { UsersChipComponent } from './components/users-chip/users-chip.component
     PostsDisplayComponent,
     PostsFormComponent,
     PostsMenuComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    EditPostComponent,
   ],
   imports: [
     MatAutocompleteModule,

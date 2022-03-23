@@ -1,15 +1,21 @@
 <div class="posts-container">
-  <!-- <div *ngFor="let post of posts " class="post">
-    <div>
-      <img src="{{ post.imageSorce }}" alt="{{ post.description }}" />
-    </div>
-    <div class="display-center">{{ post.description }}</div>
-    <div class="display-center">
-      <button class="btn" (click)="deletePost(post)">Delete</button> -->
-  <!-- <div *ngFor="let post of posts$ | async" class="post"> -->
   <div *ngFor="let post of postsD" class="post">
-    <div class="user-name">
-      {{ post.user?.firstName }} {{ post.user?.lastName }}
+    <div class = "top-buttons">
+      <div class="user-name">
+        {{ post.user?.firstName }} {{ post.user?.lastName }}
+      </div>
+
+      <span *ngIf="isUserPost(post.id)" class="edit-div"
+        ><button class="button-62" (click)="Edit(post)" role="button">
+          Edit
+        
+        </button>  <div class ="edit-post" *ngIf="clickedToEdit"><app-edit-post [postId]="post.id" ></app-edit-post></div></span
+      >
+      <!-- <span *ngIf="isUserPost(post.id)" class="edit-div"
+        ><button class="button-62" (click)="Delete(post)" role="button">
+          Delete
+        </button></span
+      > -->
     </div>
     <div class="date-posted">{{ post.date | date: "short" }}</div>
     <div>{{ post.description }}</div>
@@ -79,15 +85,14 @@
       </button>
       <!-- <button class="btn" (click)="deletePost(post.id)">Delete</button> -->
     </div>
-    <div *ngIf = "addCommentPresed">
-      <app-add-comment [post] = "post"></app-add-comment>
+    <div *ngIf="addCommentPresed">
+      <app-add-comment [post]="post"></app-add-comment>
     </div>
 
     <!-- <div *ngIf="findIfCommentPressed(post)">
       
     </div> -->
     <div class="comments-container" *ngIf="checkIfDisplayComments(post)">
-
       <!-- <form action="">
         <input
           id="stam"

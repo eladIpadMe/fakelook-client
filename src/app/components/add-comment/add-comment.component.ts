@@ -13,6 +13,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {map, Observable, startWith} from 'rxjs';
 import { UserTaggedComment } from 'src/app/models/userTaggedComment.model';
 import { CommentService } from 'src/app/services/comment.service';
+import { Router } from '@angular/router';
 
 
 
@@ -45,7 +46,7 @@ export class AddCommentComponent implements OnInit {
   hashtags: Tag[]= [];
   content: string= "";
   @Input() post?: Post;
-  constructor(private commentService: CommentService, private hashtagService: HashtagService) {
+  constructor(private commentService: CommentService, private hashtagService: HashtagService,  private router: Router) {
     this.id = Number(sessionStorage.getItem('id'))
    }
     
@@ -89,6 +90,9 @@ export class AddCommentComponent implements OnInit {
     }
     console.log(newComment);
     this.commentService.addComment(newComment);
+    this.router.navigateByUrl('/Main-page');
+    // this.router.navigateByUrl('/Main-page');
+    // this.router.navigateByUrl('/Main-page/-Timeline');
   }
 }
   
