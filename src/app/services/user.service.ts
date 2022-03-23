@@ -16,7 +16,11 @@ export class UserService {
       Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     });
    }
-
+  
+  getAllUsers(): Observable<User[]>{
+    const headers = this.headers;
+    return this.http.get<User[]>(this.usersUrl, {headers});
+  }
   getUserById(id:number): Observable<User> {
     const headers = this.headers;
     return this.http.get<User>(this.usersUrl+'/'+id, {headers});

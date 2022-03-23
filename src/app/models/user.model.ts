@@ -5,6 +5,7 @@ import { UserTaggedComment } from "./userTaggedComment.model";
 import { UserTaggedPost } from "./userTaggedPost.model";
 
 export interface User{
+    id?: number;
     firstName: string;
     lastName: string;
     userName: string;

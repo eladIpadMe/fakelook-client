@@ -4,6 +4,7 @@ import { catchError, map, Observable, of, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Like } from '../models/like.model';
 import { Post } from '../models/post.model';
+import { PostsFilter } from '../models/postsfilter.model';
 
 @Injectable({
   providedIn: 'root'
@@ -75,5 +76,10 @@ export class PostService {
     (error) => console.log(error)
     );
    
+  }
+
+  filterPosts(postFilter: PostsFilter): Observable<Post[]>{
+    const currentUrl = `${this.url}Post/Filter`;
+    return this.http.post<Post[]>(currentUrl, postFilter);
   }
 }

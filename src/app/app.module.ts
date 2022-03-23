@@ -25,8 +25,20 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { MapModule } from './components/map.module';
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
+//import {MatChipsModule, MAT_CHIPS_DEFAULT_OPTIONS} from '@angular/material/chips';
+//import { MatInputModule} from '@angular/material/input';
+//import { MatIconModule } from '@angular/material/icon'
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { TagsChipComponent } from './components/tags-chip/tags-chip.component';
+import { UsersChipComponent } from './components/users-chip/users-chip.component';
 @NgModule({
   declarations: [
+    TagsChipComponent,
+    UsersChipComponent,
     AppComponent,
     FilterComponent,
     FriendsComponent,
@@ -41,9 +53,17 @@ import { MapModule } from './components/map.module';
     //PostsDialogComponent,
     PostsDisplayComponent,
     PostsFormComponent,
-    PostsMenuComponent
+    PostsMenuComponent,
+    AddCommentComponent
   ],
   imports: [
+    MatAutocompleteModule,
+    MatChipsModule,
+    MatIconModule,
+    MatFormFieldModule,
+   // MatIconModule,
+    //MatInputModule,
+    //MatChipsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

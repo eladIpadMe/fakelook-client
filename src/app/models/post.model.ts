@@ -2,6 +2,7 @@ import { Like } from "./like.model";
 import { User } from "./user.model";
 import { Comment } from "./comment.model";
 import { Tag } from "./tag.model";
+import { UserTaggedPost } from "./userTaggedPost.model";
 
 export interface Post{
     id?: number;
@@ -15,5 +16,6 @@ export interface Post{
     userId: number;
     likes?: Like[];
     comments?: Comment[];
-    hashtags?: Tag[];   
+    tags?: Tag[];   
+    userTaggedPost?: UserTaggedPost[]; 
 }
