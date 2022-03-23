@@ -29,6 +29,9 @@ export class PostsDisplayComponent implements OnInit {
   newLike: boolean = true;
   userId: number = 0;
   likesCount = new Map();
+  booleanLikeArray: Boolean[] = [];
+
+  addCommentPresed: boolean = false;
   // @Input() posts$!: Observable<Post[]>;
   @Output() postDeleteEventEmitter = new EventEmitter<string>();
   
@@ -37,8 +40,8 @@ export class PostsDisplayComponent implements OnInit {
     this.userId = Number(sessionStorage.getItem('id'));
     this.userService.getUserById(this.userId).subscribe((user)=> {
       this.user = user;
-      console.log(`User is: `);
-      console.log(this.user);
+      //console.log(`User is: `);
+      //console.log(this.user);
     },
     (error) => console.log(error));
 
@@ -49,7 +52,7 @@ export class PostsDisplayComponent implements OnInit {
     this.postService.getPosts().subscribe((posts) =>{
       debugger;
       this.postsD = posts;
-      console.log(this.posts);
+      //console.log(this.posts);
       this.postsD.forEach(p =>{
         p.likes?.forEach(like => {
           if(like.isActive){
@@ -60,9 +63,12 @@ export class PostsDisplayComponent implements OnInit {
               this.likesCount.set(p.id, 1);
             }
           }
-          console.log(like);
-          if(like.userId === this.userId && like.isActive === true){
+          //console.log(like);
+          if(like.userId === this.userId ){
+            this.booleanLikeArray[<number>p.id] = false;
+            if(like.isActive === true){
             this.likedPost[<number>p.id] = true;
+            }
           }
         });
 
@@ -89,6 +95,13 @@ export class PostsDisplayComponent implements OnInit {
   highlightLike(post: Post){
     this.likedPost[<number>post.id] = !this.likedPost[<number>post.id];
     this.postService.manageLike(<number>post.id, this.userId);
+    if(this.likedPost[<number>post.id] === true){
+      this.likesCount.set(post.id, this.likesCount.get(post.id) + 1);
+    }
+    else{
+      this.likesCount.set(post.id, this.likesCount.get(post.id) - 1);
+    }
+    
     // console.log("the liked post is: ");
     // console.log(post);
     // if(post.likes){
@@ -128,8 +141,8 @@ export class PostsDisplayComponent implements OnInit {
 
   }
 
-  blockUser(){
-
+  blockUser(post: Post){
+    this.commentsPressed[<number>post.id] = false;
   }
 
   showLikesList(post: Post){
@@ -144,14 +157,17 @@ export class PostsDisplayComponent implements OnInit {
     return this.commentsPressed[<number>post.id];
   }
 
-
+  ShowCommentComponent(): boolean{
+    this.addCommentPresed = !this.addCommentPresed;
+    console.log(this.addCommentPresed);
+    return this.addCommentPresed;
+  }
   showComments(post: Post){
+    this.commentsPressed[<number>post.id] = !this.commentsPressed[<number>post.id];
 
-    this.commentsPressed[<number>post.id] = !this.commentsPressed[<number>post.id] ;
-    //this.input.nativeElement.focus();
-    console.log(document.getElementById("stam"));
-    document.getElementById("input")?.focus();
-
+  }
+  findIfCommentPressed(post: Post): boolean{
+    return this.commentsPressed[<number>post.id];
   }
   exitLikesScreen(post: Post){
     this.dispalyLikesPressed[<number>post.id] = false;
@@ -162,7 +178,7 @@ export class PostsDisplayComponent implements OnInit {
   }
   addComment(event: any, post: Post){
     let newCommentContent = event.target.value;
-    console.log(newCommentContent);
+    //console.log(newCommentContent);
     event.target.value = "";
     let newComment: Comment= {
       content: newCommentContent,

@@ -1,0 +1,31 @@
+<div>
+    <mat-form-field class="user-chip-list" appearance="fill">
+      <mat-label>Tag Friends</mat-label>
+      
+      <mat-chip-list #userList aria-label="Users-selection">
+        <mat-chip
+          *ngFor="let user of users"
+          (removed)="removeUser(user)">
+          {{user}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+        <input
+        [placeholder]="placeHolder"
+        #userInput
+        [formControl]="userCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="userList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="addUser($event)"> 
+      </mat-chip-list>
+       
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedUsers($event)">
+        <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
+          {{user}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  

@@ -1,16 +1,21 @@
 .body{
     position: relative;
-    top: 0;
+    top: 0rem;
+    overflow: auto;
+    min-width: 20rem;
+    z-index: 20;
 }
 
 form{
+    border: none;
     border-radius: 10px;
-    padding: 20px 35px;
+    background-color: #316ec967;
+    //padding: 20px 35px;
 }
 form *{
     font-family: 'Poppins',sans-serif;
     letter-spacing: 0.5px;
-    outline: none;
+    //outline: none;
     border: none;
     overflow: auto;
 }
@@ -33,7 +38,8 @@ input{
     display: block;
     height: 50px;
     width: 100%;
-    background-color: rgba(130, 171, 219, 0.342);
+    background-color:white;
+    // background-color: rgba(130, 171, 219, 0.342);
     border-radius: 3px;
     padding: 0 10px;
     margin-top: 8px;

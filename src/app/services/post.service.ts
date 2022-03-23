@@ -20,19 +20,12 @@ export class PostService {
   private url= environment.url;
   private subs: Subscription[] = [];
   private post1: Post[] = [];
-  // ngOnInit(): void {
-  //   const currentUrl = `${this.url}Post`;
-  //   var  tempPosts = this.http.get<Post[]>(currentUrl).subscribe;
-  //   this.tempPosts$.subscribe(event => this.event = event);
-  //   this.postsSubject = new BehaviorSubject<Post[]>(tempPosts)
-  // }
   createPost(post: Post): void {
 
     const currentUrl = `${this.url}Post/Post`;
 
     const headers = this.headers;
       this.http.post<Post>(currentUrl, post, {headers}).subscribe((res) => {
-        //this.router.navigateByUrl('/Stam');
         console.log(post);
         console.log("New post entered!");
         console.log(res);
@@ -40,16 +33,6 @@ export class PostService {
       (error) => console.log(error)
       );
   }
-
-  // getPosts(): Observable<Post[]>{
-      
-
-  // const headers = this.headers;
-  //   return this.http.get<Post[]>(`${this.url}Post`, {headers}).pipe(
-  //     map((res) => res));
-  //     catchError((err) => of({msg: 'Your session has expired. Please register again'}));
-  // }
-
   getPosts(): Observable<Post[]> {
     const currentUrl = `${this.url}Post`;
     const headers = this.headers;
@@ -59,13 +42,6 @@ export class PostService {
         .subscribe((res) => this.postsSubject.next(res)));
     return this.postsSubject;
   }
-
-  // getPosts(): Observable<Post[]> {
-  //   const currentUrl = `${this.url}Post`;
-  //   return this.http.get<Post[]>(currentUrl)
-  // }
-
-
   manageLike(userId: number, postId: number){
     const headers = this.headers;
     let like: Like = {userId:userId, postId:postId};
@@ -74,22 +50,15 @@ export class PostService {
     (error) => console.log(error)
     );
   }
-
-  ///////check!!!////////
-  // updatePost(post: Post){
-  //   this.http.put<Post>(`${this.url}Post/${post.id}`, post);
-  // }
   deletePost(id: string): void {
     const currentUrl = `${this.url}Post/Delete`;
 
     this.http.delete<any>(currentUrl + "/" + id).subscribe((res) => {
-      //this.router.navigateByUrl('/Stam');
       console.log("post " + id + "been deleted");
       console.log(res);
     },
     (error) => console.log(error)
     );
-   
   }
 
   filterPosts(postFilter: PostsFilter){

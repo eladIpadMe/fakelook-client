@@ -4,10 +4,10 @@ import { UserTaggedComment } from "./userTaggedComment.model";
 
 export interface Comment{
     id?: number;
+    user?: User;
     content: string;
     userId: number;
-    user?: User;
     postId: number;
-    hashtags?: Tag[];
-    usersTagged?: UserTaggedComment[];
+    tags?: Tag[];
+    userTaggedComment?: UserTaggedComment[];
 }

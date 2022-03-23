@@ -36,7 +36,7 @@ $fakelook-client-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; box-sizing: border-box;}
 
 .display-center {
   justify-content: center;
@@ -87,3 +87,5 @@ form {
   height: 100%;
   font-family:  'Roboto', sans-serif;
   }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
