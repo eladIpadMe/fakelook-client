@@ -37,17 +37,6 @@ export class AuthService implements OnDestroy {
       (error) => alert("Invalid"))
     );
   }
-  checkAccess(): Observable<boolean> {
-    let token = this.getToken();
-    const currentUrl = `${this.url}Auth/TestAll`;
-    const headers = new HttpHeaders({
-      Authorization: 'Bearer ' + token,
-    });
-    return this.http.get(currentUrl, { headers }).pipe(
-      map((_) => true),
-      catchError((_) => of(false))
-    );
-  }
  
   private getToken(): string | null {
     return sessionStorage.getItem('token');

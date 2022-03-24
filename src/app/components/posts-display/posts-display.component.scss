@@ -17,20 +17,13 @@
   }
   body{
     font-family: 'Roboto', sans-serif;
-    //background-color: rgba(0, 0, 0, 0.05);
   }
 
   .posts-container {
-    // height: 40vh;
-    //  overflow: auto;
-    //margin: 0 auto;
-    //height: 40vh;
     margin-top: 2rem;
     margin: 0 0 0 5rem;
     padding: 2rem 2rem 2rem 0;
     overflow: auto;
-    //max-width: 100%;
-    //background-color: rgba(0, 0, 0, 0.05);
   }
   .show-likes-btn{
     display: inline;
@@ -38,8 +31,6 @@
   }
   .show-comment-btn{
     display: inline;
-    //position: absolute;
-    //right: 0;
     float: right;
   }
   img{
@@ -91,7 +82,6 @@ button{
 }
 .post-options> button{
   flex-grow: 1;
-  //@at-root: 0.7rem;
 }
 
 .love-logo{
@@ -120,8 +110,6 @@ button{
 .post-options> button:hover{
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 4px;
-  // color: #2FA4FF;
-  // font-weight: 500;
 }
 .liked{
   color: #2FA4FF;
@@ -172,17 +160,9 @@ transition: 8s;
   top: 0.2rem;
   right: -4.5rem;
 }
-// .comments-container{
-//   display: grid;
-//   grid-template-columns: 1fr;
-// }
-// .comment-div{
-//   display: block;
-// }
 .comments-container{
   height: 10rem;
   overflow: auto;
-  //transition: 10s;
 }
 .comment-div{
   display: inline-block;
@@ -192,9 +172,7 @@ transition: 8s;
   padding: 0.6rem;
 }
 form{
-  //position: fixed;
   border: none;
-  //height: 2rem ;
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.05);
   margin: 0;
@@ -204,7 +182,6 @@ form{
 
 }
 .write-comment-inp{
-  //position: fixed;
   box-sizing: border-box;
   width: 80%;
   max-width: 100%;
@@ -240,11 +217,6 @@ form{
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-
-
-
-
-/* CSS */
 .button-62 {
   background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
   border: 0;
@@ -274,7 +246,6 @@ form{
 .button-62:not([disabled]):hover {
   box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
 }
-
     
 .edit-div{
   align-self: end;
@@ -285,9 +256,3 @@ form{
   grid-template-columns: auto auto; 
   justify-content: space-around; 
 }
-
-
-// .edit-post{
-//   position: fixed;
-//   z-index: 2;
-// }

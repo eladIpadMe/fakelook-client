@@ -76,11 +76,13 @@ user: User;
       this.postservice.createPost(this.post);
       
     });
-    
+    this.dialogRef.close({event: this.post});
   }
+  //get wanted hashtag for chips bar menu
   placeholder(placeholder: string): string{
     return placeholder;
   }
+   //users input post users tagged
   addUserTagged(userTags: string[]){
     userTags.forEach(ut =>{
       const newUserTag: UserTaggedPost ={
@@ -89,6 +91,7 @@ user: User;
       this.usersTagged.push(newUserTag);
     })
   }
+  //users input post taggs
   addTagges(tags: string[]){
     tags.forEach(t => {
       const newTag : Tag = {
@@ -98,17 +101,8 @@ user: User;
         this.hashtagService.addTag(newTag).subscribe; 
       });
   }
-  // private randomLocation(): any {
-  //   const randomStart = {
-  //     latitude: 37.7768006 * Math.random(),
-  //     longitude: -122.4187928 * Math.random(),
-  //   };
-  //   const radius = 5000000000 * Math.random();
-  //   const { latitude, longitude } = randomLocation.randomCirclePoint(
-  //     randomStart,
-  //     radius
-  //   );
-
-  //   return Cesium.Cartesian3.fromDegrees(longitude, latitude);
-  // }
+  //close dialog
+  onNoClick(){
+    this.dialogRef.close({event: this.post});
+  }
 }

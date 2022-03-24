@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
-import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -25,14 +24,11 @@ export class ForgotPasswordComponent implements OnInit {
       Validators.required,
       Validators.minLength(4),
     ]),
-    // role: new FormControl('', Validators.required),
   });
 
   ngOnInit(): void {}
   submitPost(): void {
     var user: User = this.forgotPasswordForm.value;
-    // console.log(user);
-    // console.log(typeof(user));
     console.log(this.forgotPasswordForm.controls.password1.value);
     console.log(this.forgotPasswordForm.controls.passwordConfirmation.value);
 

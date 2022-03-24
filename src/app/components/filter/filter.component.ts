@@ -31,7 +31,7 @@ export class FilterComponent implements OnInit {
   });
   ngOnInit(): void {
   }
-
+  //match input to servers format
   checkInputFormValidity(array: any){
     
     if(array === "" || array === ""){
@@ -51,40 +51,21 @@ export class FilterComponent implements OnInit {
     console.log("filter is: ");
     console.log(postFilter);
     this.postService.filterPosts(postFilter);
-  //   .subscribe((filteredPosts)=> {
-  //     this.filteredPosts = filteredPosts
-  //     console.log("returned posts are: ");
-  //     console.log(this.filteredPosts);
-  //   },
-  //   (error) => console.log(error))
-  // }
   }
+  //get wanted hashtag for chips bar menu
   placeholder(placeHolder: string):string{
     return placeHolder;
   }
-  
+  //update publishers to users input
   addPublishersFilter(publishers: string[]){
     this.publishers = publishers;
   }
-
+  //update tagged users to users input
   addUserTaggedFilter(usersTagged: string[]){
     this.usersTagged = usersTagged;
   }
+   //update taggs users to users input
   addTaggesFilter(taggs: string[]){
     this.hashTags = taggs;
   }
-  // submitPost(){
-  //   let postFilter: PostsFilter ={
-  //     publishers : this.checkInputFormValidity(this.filterForm.controls.Publishers.value),
-  //     startingDate: this.checkInputFormValidity(this.filterForm.controls.DateFrom.value),
-  //     endingDate: this.checkInputFormValidity(this.filterForm.controls.DateTo.value),
-  //     hashtags : this.checkInputFormValidity(this.filterForm.controls.Tags.value),
-  //     taggesUsers: this.checkInputFormValidity(this.filterForm.controls.TagsUsers.value)
-  //   }
-    
-  //    this.postService.filterPosts(postFilter);
-  // }
-
-  
-  
 }

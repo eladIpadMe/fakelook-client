@@ -16,10 +16,6 @@ export class PostsMenuComponent implements OnInit {
   posts: Post[] = [];
 
   ngOnInit(): void {
-    // this.postService.getPosts().subscribe(
-    //   (posts) => (this.posts = posts),
-    //   (error) => console.log(error)
-    // );
   }
   onNewPost(post: Post): void {
     this.postService.createPost(post);

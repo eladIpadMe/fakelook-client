@@ -49,12 +49,11 @@ export class PostService {
         .subscribe((res) => this.postsSubject.next(res)));
     return this.postsSubject;
   }
-
+//get post by id
   getPost(id:number): Observable<Post> {
     const headers = this.headers;
     return this.http.get<Post>(`${this.url}Post/`+id, {headers});
   }
-  
   
   updatePost(post: Post): void{
     const headers = this.headers;
@@ -68,8 +67,7 @@ export class PostService {
     (error) => console.log(error)
     ); 
   }
-
-
+//update like as active/not active
   manageLike(userId: number, postId: number){
     const headers = this.headers;
     let like: Like = {userId:userId, postId:postId};
@@ -88,7 +86,7 @@ export class PostService {
     (error) => console.log(error)
     );
   }
-
+//get all posts that are defined as the user filter
   filterPosts(postFilter: PostsFilter){
     const currentUrl = `${this.url}Post/Filter`;
     this.subs.push(this.http.post<Post[]>(currentUrl, postFilter,{headers:this.headers}).subscribe((res)=>{

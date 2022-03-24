@@ -71,7 +71,7 @@ filteredUsers: Observable<string[]>;
       this.users.splice(index, 1);
     }
   }
-
+//get all users to tag input from user
   selectedUsers(event: MatAutocompleteSelectedEvent): void {
     this.users.push(event.option.viewValue);
     this.userInput.nativeElement.value= '';

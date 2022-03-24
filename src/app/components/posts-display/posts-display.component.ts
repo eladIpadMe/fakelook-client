@@ -1,19 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild,Inject } from '@angular/core';
 import { Post } from 'src/app/models/post.model';
 import { User } from 'src/app/models/user.model';
-import { Comment } from 'src/app/models/comment.model';
-import { LikeService } from 'src/app/services/like.service';
 import { UserService } from 'src/app/services/user.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { PostService } from 'src/app/services/post.service';
-import { Router } from '@angular/router';
-
-
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AddCommentComponent } from '../add-comment/add-comment.component';
 export interface DialogData {
   post: Post;
-  //name: string;
 }
 @Component({
   selector: 'app-posts-display',
@@ -26,7 +20,6 @@ export class PostsDisplayComponent implements OnInit {
     private userService: UserService,
     private commentService: CommentService,
     public dialog: MatDialog) {}
-    //@Input() posts: Post[] | undefined;
   posts: Post[] = [];
   dispalyLikesPressed: boolean[] = [];
   commentsPressed: boolean[] = [];
@@ -49,11 +42,9 @@ export class PostsDisplayComponent implements OnInit {
    
     },
     (error) => console.log(error));
-
   }
 
   getPosts(){
-  
     this.postService.getPosts().subscribe((posts) =>{
       this.posts = posts;
       console.log(this.posts);
@@ -91,7 +82,7 @@ export class PostsDisplayComponent implements OnInit {
     return this.likesCount.get(post.id);
   }
   
-
+//highlite like when pressed
   highlightLike(post: Post){
     this.likedPost[<number>post.id] = !this.likedPost[<number>post.id];
     this.postService.manageLike(<number>post.id, this.userId);
@@ -101,45 +92,8 @@ export class PostsDisplayComponent implements OnInit {
     else{
       this.likesCount.set(post.id, this.likesCount.get(post.id) - 1);
     }
-    
-   
-
- 
-    // console.log("the liked post is: ");
-    // console.log(post);
-    // if(post.likes){
-    //   post.likes.forEach(like => {
-    //     if(like.user === this.user){
-    //       this.newLike = false;
-    //       this.getLike()
-    //     }
-    //     // else{
-    //     //   like.isActive = !like.isActive;
-    //     // }
-    //   });
-    // }
-    // //like already exists and the user removed it- update database
-    //   if(!this.newLike){
-    //     this.likeService.updateLike(like)
-    //   }
-
-    //   //new like- add to database
-    //   if(this.newLike){
-    //     let like = {
-    //       isActive: true,
-    //       userId: this.userId,
-    //       postId: <number>post.id
-    //     }
-    //     console.log(`new Like is: `);
-    //     console.log(like);
-    //     this.likeService.createLike(like);
-    //     console.log(post);
-    //   }
-  
-  
-    //this.postService.updatePost(post);
-
   }
+  //open comment dialog to add comment
   openDialog(post: Post): void{
     const dialogRef = this.dialog.open(AddCommentComponent
       ,{data: {post: post}});
@@ -149,39 +103,36 @@ export class PostsDisplayComponent implements OnInit {
         console.log(comment);
       });
   }
-  
-  comment(){
-
-  }
 
   blockUser(post: Post){
     this.commentsPressed[<number>post.id] = false;
   }
-
+//when like menu pressed display all posts likes
   showLikesList(post: Post){
     this.dispalyLikesPressed[<number>post.id] = !this.dispalyLikesPressed[<number>post.id];
-    
   }
-
+//check if likes bar pressed
   checkIfLiked(post: Post): boolean{
     return this.likedPost[<number>post.id];
   }
+  //check if comments bar pressed
   checkIfDisplayComments(post: Post): boolean{
     return this.commentsPressed[<number>post.id];
   }
-
+//display comments
   ShowCommentComponent(): boolean{
     this.addCommentPresed = !this.addCommentPresed;
-    console.log(this.addCommentPresed);
     return this.addCommentPresed;
   }
+
   showComments(post: Post){
     this.commentsPressed[<number>post.id] = !this.commentsPressed[<number>post.id];
-
   }
+  //return boolean if comments bar pressed
   findIfCommentPressed(post: Post): boolean{
     return this.commentsPressed[<number>post.id];
   }
+  
   exitLikesScreen(post: Post){
     this.dispalyLikesPressed[<number>post.id] = false;
   }
@@ -189,19 +140,4 @@ export class PostsDisplayComponent implements OnInit {
   checkIfDisplayLikesPressed(post: Post): boolean{
     return this.dispalyLikesPressed[<number>post.id];
   }
-  // addComment(event: any, post: Post){
-  //   let newCommentContent = event.target.value;
-  //   //console.log(newCommentContent);
-  //   event.target.value = "";
-  //   let newComment: Comment= {
-  //     content: newCommentContent,
-  //     postId: <number>post.id,
-  //     userId : this.userId,
-      
-  //   }
-  //   this.commentService.addComment(newComment);
-  //   newComment.user = this.user;
-  //   post.comments?.push(newComment);
-    
-  // }
 }
