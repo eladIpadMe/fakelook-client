@@ -4,6 +4,6 @@
       <input type="text" class="content" placeholder="Enter content.." [(ngModel)]="content">
       <app-users-chip [placeHolder]="placeholder('Tag Friends')" (usersTaggedInComment)="updateUsersTagged($event)"></app-users-chip>
       <app-tags-chip [placeHolder]="placeholder('Hashtags')" (tagsChosen)="updateTagesChosen($event)"></app-tags-chip>
-      <button (click)="addComment()">Add</button>
+      <button class="add-coment-btn" (click)="addComment()">Add</button>
   </div>
 </div>
