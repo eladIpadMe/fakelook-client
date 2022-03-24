@@ -23,8 +23,8 @@ export class PostsDisplayComponent implements OnInit {
     private userService: UserService,
     private commentService: CommentService,
     public dialog: MatDialog) {}
-    @Input() posts: Post[] | undefined;
-  postsD: Post[] = [];
+    //@Input() posts: Post[] | undefined;
+  posts: Post[] = [];
   dispalyLikesPressed: boolean[] = [];
   commentsPressed: boolean[] = [];
   likedPost: boolean[] = [];
@@ -53,9 +53,9 @@ export class PostsDisplayComponent implements OnInit {
   getPosts(){
   
     this.postService.getPosts().subscribe((posts) =>{
-      this.postsD = posts;
-      //console.log(this.posts);
-      this.postsD.forEach(p =>{
+      this.posts = posts;
+      console.log(this.posts);
+      this.posts.forEach(p =>{
         p.likes?.forEach(like => {
           if(like.isActive){
             if(this.likesCount.get(p.id) != null){
@@ -187,19 +187,19 @@ export class PostsDisplayComponent implements OnInit {
   checkIfDisplayLikesPressed(post: Post): boolean{
     return this.dispalyLikesPressed[<number>post.id];
   }
-  addComment(event: any, post: Post){
-    let newCommentContent = event.target.value;
-    //console.log(newCommentContent);
-    event.target.value = "";
-    let newComment: Comment= {
-      content: newCommentContent,
-      postId: <number>post.id,
-      userId : this.userId,
+  // addComment(event: any, post: Post){
+  //   let newCommentContent = event.target.value;
+  //   //console.log(newCommentContent);
+  //   event.target.value = "";
+  //   let newComment: Comment= {
+  //     content: newCommentContent,
+  //     postId: <number>post.id,
+  //     userId : this.userId,
       
-    }
-    this.commentService.addComment(newComment);
-    newComment.user = this.user;
-    post.comments?.push(newComment);
+  //   }
+  //   this.commentService.addComment(newComment);
+  //   newComment.user = this.user;
+  //   post.comments?.push(newComment);
     
-  }
+  // }
 }
