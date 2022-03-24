@@ -1,15 +1,10 @@
 aside {
-    //background-color: #316ec967;
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
-    //max-width: 45%;
-    //height: 100%;
-    //z-index: 1;
     overflow: auto;
-    //z-index: 20;
   }
   img{
     width: 0.9rem;
@@ -20,12 +15,6 @@ aside {
     z-index: 50;
     margin: 0;
   }
-  // button{
-  //   width: 100%;
-  //   flex-grow: 1;
-    
-  // }
-  
   .option-nav :hover{
     background-color:  rgba(238, 238, 238, 1);
     box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;

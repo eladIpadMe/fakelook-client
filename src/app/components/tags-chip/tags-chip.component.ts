@@ -77,7 +77,7 @@ filteredHashtags: Observable<string[]>;
       this.hashtags.splice(index, 1);
     }
   }
-
+//get hashtags input from user
   selectedHashtags(event: MatAutocompleteSelectedEvent): void {
     this.hashtags.push(event.option.viewValue);
     this.hashtagInput.nativeElement.value= '';

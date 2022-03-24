@@ -34,10 +34,11 @@ export class AddCommentComponent implements OnInit {
     
   ngOnInit(): void {
   }
-
+//get wanted hashtag for chips bar menu
   placeholder(placeHolder: string):string{
     return placeHolder;
   }
+  //update tags input
   updateTagesChosen(tags: string[]){
     tags.forEach(t =>{
       const newTag: Tag ={
@@ -47,6 +48,7 @@ export class AddCommentComponent implements OnInit {
       this.hashtagService.addTag(newTag).subscribe; 
     })
   }
+  //update user tagged input
   updateUsersTagged(userTags: string[]){
     
     userTags.forEach(ut =>{
@@ -56,6 +58,7 @@ export class AddCommentComponent implements OnInit {
       this.userTagged.push(newUserTag);
     })
   }
+  //match input to servers format
   checkValidancy(array: any){
     if(array.length === 0 || array === "")
       return null;
@@ -67,17 +70,14 @@ export class AddCommentComponent implements OnInit {
       content: this.checkValidancy(this.content),
       userId: this.id,
       postId: <number>this.data.post.id,
-      //<number>this.post?.id,
       tags: this.checkValidancy(this.hashtags),
       userTaggedComment: this.checkValidancy(this.userTagged)
     }
     this.comment = newComment;
     this.commentService.addComment(newComment);
-    //this.router.navigateByUrl('/Main-page');
-    // this.router.navigateByUrl('/Main-page');
-    // this.router.navigateByUrl('/Main-page/-Timeline');
+    this.dialogRef.close({event: this.comment});
   }
-
+//close add comment dialog
   onNoClick(){
     this.dialogRef.close({event: this.comment});
   }

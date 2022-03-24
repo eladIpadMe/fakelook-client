@@ -10,15 +10,6 @@
       loginFormControl.userName.invalid">
         name not valid
       </div>
-      <!-- <div
-        class="error"
-        *ngIf="
-          loginForm.controls.userName.touched &&
-          loginForm.controls.userName.invalid
-        "
-      >
-        user name not valid
-      </div> -->
      
       <label for="password">Password</label>
       <input formControlName="password" type="password" id="password" />
@@ -36,10 +27,5 @@
           Login
         </button>
       </div>
-      <!-- <div>
-        loginForm {{ loginForm.value | json }}
-       loginForm valid? {{ loginForm.valid | json }} 
-
-      </div> -->
     </form>
   </div>

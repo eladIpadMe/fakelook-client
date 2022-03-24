@@ -17,8 +17,7 @@ export class HashtagService {
     });
    }
 
-   getAllTags(): Observable<Tag[]>{
-    
+ getAllTags(): Observable<Tag[]>{
   const headers = this.headers;
   return this.http.get<Tag[]>(this.url, {headers});
   } 

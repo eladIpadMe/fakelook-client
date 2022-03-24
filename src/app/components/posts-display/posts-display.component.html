@@ -1,13 +1,4 @@
-<!-- <div class="posts-container">
-   <div *ngFor="let post of posts " class="post">
-    <div>
-      <img src="{{ post.imageSorce }}" alt="{{ post.description }}" />
-    </div>
-    <div class="display-center">{{ post.description }}</div> -->
-    <!-- <div class="display-center">
-      <button class="btn" (click)="deletePost(post)">Delete</button>  -->
-  <!-- <div *ngFor="let post of posts$ | async" class="post"> -->
-  <div *ngFor="let post of posts" class="post">
+<div *ngFor="let post of posts" class="post">
     <div class="user-name">
       {{ post.user?.firstName }} {{ post.user?.lastName }}
     </div>
@@ -46,7 +37,6 @@
       <button (click)="showComments(post)" class="show-comment-btn">
         {{ post.comments?.length }} Comments
       </button>
-      <!-- <button class="btn" (click)="deletePost(post.id)">Delete</button> -->
     </div>
     <div class="post-options">
       <button
@@ -68,64 +58,9 @@
         class="comment-btn-logo"
       />
       </button>
-      
-      <!-- <button
-        class="comment-btn"
-        (click)="ShowCommentComponent()"
-        [class.highliteCommentBtn]="checkIfDisplayComments(post)"
-      > -->
-<!--         
-      </button> -->
-      <!-- <button class="block-btn" (click)="blockUser(post)">
-        Tag User<img
-          src="..\..\..\assets\tag-friend-logo.png"
-          alt=""
-          class="block-btn-logo"
-        />
-      </button>
-      <button class="block-btn" (click)="blockUser(post)">
-        Hashtag<img
-          src="..\..\..\assets\hashtag-logo.png"
-          alt=""
-          class="block-btn-logo"
-        />
-      </button> -->
-      <!-- <button class="btn" (click)="deletePost(post.id)">Delete</button> -->
-    <!-- </div> -->
-    <!-- <div *ngIf = "addCommentPresed">
-      <app-add-comment [post] = "post"></app-add-comment>
-    </div> -->
-
-    <!-- <div *ngIf="findIfCommentPressed(post)">
-      
-    </div> -->
+    </div>
     <div class="comments-container" *ngIf="checkIfDisplayComments(post)">
-      <!-- <form action="">
-        <input
-          id="stam"
-          type="text"
-          class="write-comment-inp"
-          placeholder="Add Comment..."
-          (keydown.enter)="addComment($event, post)"
-        />
-        <button class="tag-friends">
-          <img
-            src="..\..\..\assets\tag-friend-logo.png"
-            alt="tag-friend-logo"
-            class="tag-friend-logo"
-          />
-        </button>
-        <button class="hashtag">
-          <img
-            src="..\..\..\assets\hashtag-logo.png"
-            alt="hashtag-logo"
-            class="hashtag-logo"
-          />
-        </button>
-      </form> -->
-
-      <!-- (keydown.enter)="addComent($event)"> -->
-
+     
       <div *ngFor="let comment of post.comments" class="comment">
         <div class="comment-div">
           <div class="comment-user">
@@ -145,5 +80,5 @@
         </div>
       </div>
     </div>
-  </div>
+ 
 </div>

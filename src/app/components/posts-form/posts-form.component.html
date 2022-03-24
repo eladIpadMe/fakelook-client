@@ -1,3 +1,4 @@
+<button mat-button (click)="onNoClick()" class="exit-btn-add-comment"><img src="..\..\..\assets\exit-btn-logo.png" alt="exit button" class="exit-img"></button>
 <form #form="ngForm" (ngSubmit)="submitPost()">
     <div class="display-center"><h2>Add Post</h2></div>
     <label for="">Description</label><br>
@@ -18,7 +19,7 @@
       <app-tags-chip [placeHolder]="placeholder('Hashtags')" (tagsChosen)="addTagges($event)"></app-tags-chip>
     </div>
     <div class="display-center">
-      <button type="submit" class="btn" [disabled]="!form.valid ||!file">
+      <button class="sumbit-btn" (click) = "onNoClick()" type="submit" [disabled]="!file">
         Add Post
       </button>
     </div>

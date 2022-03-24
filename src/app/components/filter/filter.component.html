@@ -6,7 +6,7 @@
         filterForm.controls['DateFrom'].touched &&
         filterForm.controls['DateFrom'].invalid
           ">
-          DateFrom not valid
+          Date from not valid
         </div>
 
         <label for="DateTo">Date To</label>
@@ -15,7 +15,7 @@
             filterForm.controls['DateTo'].touched &&
             filterForm.controls['DateTo'].invalid
           ">
-          DateTo not valid
+          Date to not valid
         </div>
     <div class="publishers">
       <app-users-chip [placeHolder]="placeholder('Publishers')" (publishersAdded)="addPublishersFilter($event)"></app-users-chip>

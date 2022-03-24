@@ -1,7 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { empty } from 'rxjs';
 import { FileUploadService } from 'src/app/services/file-upload.service';
-
   
 @Component({
     selector: 'app-file-upload',
@@ -28,14 +26,9 @@ export class FileUploadComponent implements OnInit {
     // On file Select
     onChange(event: any) {
         this.file = event.target.files[0];
-        //this.src = event.target.files[0].name;
         this.pictureUplouded = !this.pictureUplouded;
-        // console.log(this.file);
-        // console.log(this.pictureUplouded);
-        
 
         if(this.file){
-          
           var reader =new FileReader();
           reader.onload = (e: any) => {
             this.src = e.target.result;
@@ -43,28 +36,6 @@ export class FileUploadComponent implements OnInit {
             console.log("src is: "+this.src);
           }
           reader.readAsDataURL(this.file);
-         
         }
-
-        
-
     }
-  
-    // OnClick of button Upload
-    // onUpload() {
-    //     this.loading = !this.loading;
-        
-        
-    //     this.fileUploadService.upload(this.file).subscribe(
-    //         (event: any) => {
-    //             if (typeof (event) === 'object') {
-  
-    //                 // Short link via api response
-    //                 this.shortLink = event.link;
-  
-    //                 this.loading = false; // Flag variable 
-    //             }
-    //         }
-    //     );
-    // }
 }

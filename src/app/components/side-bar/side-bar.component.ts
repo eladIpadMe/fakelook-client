@@ -18,18 +18,7 @@ export class SideBarComponent implements OnInit {
   
   ngOnInit(): void {
   }
-
-
-  selectedSideBarLeft(){
-    this.showLeft = true;
-    this.showRight = false;
-  }
-
-  selectedSideBarRight(){
-    this.showLeft = false;
-    this.showRight = true;  
-  }
-
+  //open add post dialog
   openDialog(): void{
     const dialogRef = this.dialog.open(PostsFormComponent);
       dialogRef.afterClosed().subscribe();

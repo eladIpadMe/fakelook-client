@@ -13,9 +13,11 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   AddPostBtn(){
     this.addPost = !this.addPost
   }
+  //remove token
   SignOut(){
     sessionStorage.removeItem('token'); 
   }
