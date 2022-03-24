@@ -2,11 +2,15 @@
     <div class="user-name">
       {{ post.user?.firstName }} {{ post.user?.lastName }}
     </div>
+   
     <div class="date-posted">{{ post.date | date: "short" }}</div>
     <div>{{ post.description }}</div>
     <div class= "post-img"><img  src="{{ post.imageSorce }}" alt="{{ post.description }}" /></div>
-   
-
+    <div>
+    <button class ="button-62" *ngIf= "isMypost(post.id)" (click)="isEditClicked()" >Edit   </button>
+    <app-edit-post *ngIf= "clickedToEdit && isMypost(post.id)"  [postId] = "post.id"></app-edit-post>
+    </div>
+    
     <div class="display-likes" *ngIf="checkIfDisplayLikesPressed(post)">
       <div class="likes-container">
         <button (click)="exitLikesScreen(post)">

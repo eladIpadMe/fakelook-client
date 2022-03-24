@@ -96,8 +96,11 @@ user: User;
           res.userTaggedPost = this.post.userTaggedPost;
         
            this.postservice.updatePost(res);
+           this.reloadCurrentRoute();
            debugger;
-            this.router.navigateByUrl('/TimeLine');
+           
+          //  this.router.navigateByUrl('/TimeLine');
+          //   this.router.navigateByUrl('/Main-page/TimeLine');
         }
       },
       (error) => {
@@ -105,6 +108,14 @@ user: User;
       }
     );
   }
+
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
+  }
+
   placeholder(placeholder: string): string{
     return placeholder;
   }

@@ -44,6 +44,18 @@ export class PostsDisplayComponent implements OnInit {
     (error) => console.log(error));
   }
 
+
+  isMypost (postId: number | undefined){
+    // debugger;
+    var tmp = Number(sessionStorage.getItem("id"));
+    var bol =  Number(sessionStorage.getItem("id")) === postId;
+   return Number(sessionStorage.getItem("id")) === postId
+     
+  }
+
+  isEditClicked(){
+    this.clickedToEdit = !this.clickedToEdit
+  }
   getPosts(){
     this.postService.getPosts().subscribe((posts) =>{
       this.posts = posts;

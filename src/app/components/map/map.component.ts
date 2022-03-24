@@ -42,6 +42,7 @@ export class MapComponent implements OnInit {
   flag = false;
   
   ngOnInit(): void {
+
       this.entities$ = this.postService.getPosts().pipe(
         pairwise(),
         map((posts) => {

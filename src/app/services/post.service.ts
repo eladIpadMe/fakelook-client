@@ -59,7 +59,7 @@ export class PostService {
     const headers = this.headers;
     debugger;
     let httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
+      headers: this.headers
     };
     this.http.put<Post>(`${this.url}Post/` + post.id, post, httpOptions).subscribe((res) => {     debugger;
 
@@ -88,6 +88,7 @@ export class PostService {
   }
 //get all posts that are defined as the user filter
   filterPosts(postFilter: PostsFilter){
+    debugger;
     const currentUrl = `${this.url}Post/Filter`;
     this.subs.push(this.http.post<Post[]>(currentUrl, postFilter,{headers:this.headers}).subscribe((res)=>{
       this.postsSubject.next([...res]);            

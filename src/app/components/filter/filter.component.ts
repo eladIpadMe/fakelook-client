@@ -48,8 +48,8 @@ export class FilterComponent implements OnInit {
       hashtags : this.checkInputFormValidity(this.hashTags),
       taggesUsers: this.checkInputFormValidity(this.usersTagged)
     }
-    console.log("filter is: ");
-    console.log(postFilter);
+    debugger;
+
     this.postService.filterPosts(postFilter);
   }
   //get wanted hashtag for chips bar menu
