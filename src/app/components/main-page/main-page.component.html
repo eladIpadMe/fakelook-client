@@ -1,17 +1,19 @@
-
-
 <div class="main-page">
     <div class="filter-container">
-      <app-side-bar></app-side-bar>
+      <app-side-bar class="stam"></app-side-bar>
     </div>
     <div class="display-container">
-      <button class="routing-buttons"  (click)="AddPostBtn()"> Add Post</button>
-  <div *ngIf="addPost"><app-posts-menu class = "stam"></app-posts-menu></div>
-  <li  ><a class = "routing-buttons time-line-btn" routerLink="/Login" routerLinkActive="active" (click)="SignOut()">&nbsp;LogOut&nbsp;</a></li>
         <nav class="header">
           <ul class="home-navigation">
-            <li ><a class = "routing-buttons map-btn" routerLink="/Main-page/Map" routerLinkActive="active">&nbsp;&nbsp;&nbsp;Map&nbsp;&nbsp;&nbsp;</a></li>
-            <li  ><a class = "routing-buttons time-line-btn" routerLink="/Main-page/TimeLine" routerLinkActive="active">&nbsp;Time Line&nbsp;</a></li>
+            <li><a class = "routing-buttons time-line-btn" routerLink="/Login" routerLinkActive="active" (click)="SignOut()">
+              <img class="checkout-img" src="..\..\..\assets\log-out-logo.png" alt="log out icon">
+            </a></li>
+            <li ><a class = "routing-buttons map-btn" routerLink="/Main-page/Map" routerLinkActive="active">
+              <img class="map-img" src="..\..\..\assets\map-logo.png" alt="map icon">
+            </a></li>
+            <li><a class = "routing-buttons time-line-btn" routerLink="/Main-page/TimeLine" routerLinkActive="active">
+              <img class="timeline-img" src="..\..\..\assets\timeline-logo.png" alt="timeline icon">  
+            </a></li>
           </ul>
         </nav>
         <router-outlet></router-outlet>

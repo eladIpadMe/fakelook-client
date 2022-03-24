@@ -1,6 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Like } from 'src/app/models/like.model';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild,Inject } from '@angular/core';
 import { Post } from 'src/app/models/post.model';
 import { User } from 'src/app/models/user.model';
 import { Comment } from 'src/app/models/comment.model';
@@ -8,7 +6,12 @@ import { LikeService } from 'src/app/services/like.service';
 import { UserService } from 'src/app/services/user.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { PostService } from 'src/app/services/post.service';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AddCommentComponent } from '../add-comment/add-comment.component';
+export interface DialogData {
+  post: Post;
+  //name: string;
+}
 @Component({
   selector: 'app-posts-display',
   templateUrl: './posts-display.component.html',
@@ -19,7 +22,8 @@ export class PostsDisplayComponent implements OnInit {
   constructor(private postService: PostService, 
     private userService: UserService,
     private likeService: LikeService,
-    private commentService: CommentService) {}
+    private commentService: CommentService,
+    public dialog: MatDialog) {}
     @Input() posts: Post[] | undefined;
   postsD: Post[] = [];
   dispalyLikesPressed: boolean[] = [];
@@ -50,7 +54,6 @@ export class PostsDisplayComponent implements OnInit {
   getPosts(){
   
     this.postService.getPosts().subscribe((posts) =>{
-      debugger;
       this.postsD = posts;
       //console.log(this.posts);
       this.postsD.forEach(p =>{
@@ -101,7 +104,7 @@ export class PostsDisplayComponent implements OnInit {
     else{
       this.likesCount.set(post.id, this.likesCount.get(post.id) - 1);
     }
-    
+ 
     // console.log("the liked post is: ");
     // console.log(post);
     // if(post.likes){
@@ -136,7 +139,11 @@ export class PostsDisplayComponent implements OnInit {
   
     //this.postService.updatePost(post);
   }
-
+  openDialog(post: Post): void{
+    const dialogRef = this.dialog.open(AddCommentComponent
+      ,{data: {post: post}});
+  }
+  
   comment(){
 
   }

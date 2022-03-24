@@ -27,7 +27,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { TagsChipComponent } from './components/tags-chip/tags-chip.component';
 import { UsersChipComponent } from './components/users-chip/users-chip.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     TagsChipComponent,
@@ -62,7 +62,8 @@ import { UsersChipComponent } from './components/users-chip/users-chip.component
    AngularCesiumWidgetsModule,
      ReactiveFormsModule,
      BrowserAnimationsModule,
-     HttpClientModule
+     HttpClientModule,
+     MatDialogModule
   ],
   exports: [ RouterModule  ],
   providers: [],

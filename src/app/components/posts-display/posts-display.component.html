@@ -13,7 +13,8 @@
     </div>
     <div class="date-posted">{{ post.date | date: "short" }}</div>
     <div>{{ post.description }}</div>
-    <div><img src="{{ post.imageSorce }}" alt="{{ post.description }}" /></div>
+    <div class= "post-img"><img  src="{{ post.imageSorce }}" alt="{{ post.description }}" /></div>
+   
 
     <div class="display-likes" *ngIf="checkIfDisplayLikesPressed(post)">
       <div class="likes-container">
@@ -59,29 +60,41 @@
           class="like-btn-logo"
         />
       </button>
-      <button
+
+      <button mat-raised-button (click)="openDialog(post)">
+        Comment<img
+        src="..\..\..\assets\comment-logo.png"
+        alt=""
+        class="comment-btn-logo"
+      />
+      </button>
+      
+      <!-- <button
         class="comment-btn"
         (click)="ShowCommentComponent()"
         [class.highliteCommentBtn]="checkIfDisplayComments(post)"
-      >
-        Comment<img
-          src="..\..\..\assets\comment-logo.png"
-          alt=""
-          class="comment-btn-logo"
-        />
-      </button>
-      <button class="block-btn" (click)="blockUser(post)">
-        Block<img
-          src="..\..\..\assets\block-user-logo.png"
+      > -->
+<!--         
+      </button> -->
+      <!-- <button class="block-btn" (click)="blockUser(post)">
+        Tag User<img
+          src="..\..\..\assets\tag-friend-logo.png"
           alt=""
           class="block-btn-logo"
         />
       </button>
+      <button class="block-btn" (click)="blockUser(post)">
+        Hashtag<img
+          src="..\..\..\assets\hashtag-logo.png"
+          alt=""
+          class="block-btn-logo"
+        />
+      </button> -->
       <!-- <button class="btn" (click)="deletePost(post.id)">Delete</button> -->
     </div>
-    <div *ngIf = "addCommentPresed">
+    <!-- <div *ngIf = "addCommentPresed">
       <app-add-comment [post] = "post"></app-add-comment>
-    </div>
+    </div> -->
 
     <!-- <div *ngIf="findIfCommentPressed(post)">
       
