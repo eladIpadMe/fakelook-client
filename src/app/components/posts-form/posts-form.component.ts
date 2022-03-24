@@ -1,7 +1,8 @@
 import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import * as randomLocation from 'random-location/dist';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogData, PostsDisplayComponent } from '../posts-display/posts-display.component';
 
 import { Post } from 'src/app/models/post.model';
 import { Tag } from 'src/app/models/tag.model';
@@ -36,7 +37,9 @@ Cesium = Cesium;
 description: string= "";
 user: User;
   
-  constructor(private hashtagService: HashtagService, private postservice: PostService, private userService: UserService) {
+  constructor(private hashtagService: HashtagService, private postservice: PostService, private userService: UserService,
+    public dialogRef: MatDialogRef<PostsDisplayComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,) {
     this.id = Number(sessionStorage.getItem('id'))
     this.userService.getUserById(this.id).subscribe(user =>
        this.user = user, (error)=> console.log(error));

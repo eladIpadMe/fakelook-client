@@ -21,11 +21,12 @@ export class AddCommentComponent implements OnInit {
   userTagged: UserTaggedComment[] =[];
   hashtags: Tag[]= [];
   content: string= "";
+  comment: Comment;
   @Input() post?: Post;
   constructor(private commentService: CommentService,
      private hashtagService: HashtagService,
      public dialogRef: MatDialogRef<PostsDisplayComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,) {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.id = Number(sessionStorage.getItem('id'))
    }
     
@@ -68,12 +69,12 @@ export class AddCommentComponent implements OnInit {
       tags: this.checkValidancy(this.hashtags),
       userTaggedComment: this.checkValidancy(this.userTagged)
     }
-    console.log(newComment);
+    this.comment = newComment;
     this.commentService.addComment(newComment);
   }
 
   onNoClick(){
-    this.dialogRef.close();
+    this.dialogRef.close({event: this.comment});
   }
 }
   

@@ -21,7 +21,6 @@ export class PostsDisplayComponent implements OnInit {
   likeLogoSrc: string = "..\..\..\assets\like-logo-original.png";
   constructor(private postService: PostService, 
     private userService: UserService,
-    private likeService: LikeService,
     private commentService: CommentService,
     public dialog: MatDialog) {}
     @Input() posts: Post[] | undefined;
@@ -142,6 +141,11 @@ export class PostsDisplayComponent implements OnInit {
   openDialog(post: Post): void{
     const dialogRef = this.dialog.open(AddCommentComponent
       ,{data: {post: post}});
+      dialogRef.afterClosed().subscribe(comment=>{
+        post.comments?.push(comment);
+        console.log("new comment");
+        console.log(comment);
+      });
   }
   
   comment(){

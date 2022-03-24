@@ -1,7 +1,7 @@
 
 .main-page{
    display: grid;
-   grid-template-columns:  1fr 3fr;
+   grid-template-columns:  1.7fr 3fr;
    
     //justify-content: flex-end;
     //height: 100%;
@@ -11,6 +11,7 @@
 .filter-container{
     z-index: 1;
     grid-column: 1/2;
+    height: 100%;
     //flex-grow: 1;
     // display: flex;
     // flex-direction: column;

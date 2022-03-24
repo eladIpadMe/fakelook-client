@@ -1,15 +1,25 @@
 <aside>
   <div class="btn-container">
-    <button class=" option-nav"  (click)="selectedSideBarLeft()"> <img src="..\..\..\assets\filter-logo.png" alt=""></button>
-    <button class=" option-nav"  (click)="selectedSideBarRight()"> <img src="..\..\..\assets\add-logo.png" alt=""></button>
+    <!-- <button class=" option-nav"  (click)="selectedSideBarLeft()"> <img src="..\..\..\assets\add-logo.png" alt=""></button> -->
+    <button mat-raised-button (click)="openDialog()" class="add-post-btn">
+      <img
+      src="..\..\..\assets\add-logo.png"
+      alt=""
+      class="comment-btn-logo"
+    />
+    </button>
+    <!-- <button mat-button (click)="onNoClick()" class="exit-btn-add-comment"><img src="..\..\..\assets\add-logo.png" alt="exit button" class="exit-img"></button> -->
+    <!-- <button class=" option-nav"  (click)="selectedSideBarRight()"> <img src= alt=""></button> -->
   </div>
   
-  <div class="form-container" *ngIf="showLeft">
+  <div class="form-container" >
+    <h1>Filter posts</h1>
     <app-filter class = "push"></app-filter>
   </div>
-  <div *ngIf="showRight"><app-posts-form class = "push">
+  <!-- <div *ngIf="showRight">
+    <app-posts-form class = "push">
   </app-posts-form>
-</div>
+</div> -->
 </aside>
   <!-- [ngStyle]="{'background-color': filter?  '#1366d6':'#4e7fc8' }" -->
 
