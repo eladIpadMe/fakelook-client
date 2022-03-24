@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Injectable, Input, OnInit, Output } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
 import { Tag } from 'src/app/models/tag.model';
@@ -7,6 +8,7 @@ import { UserTaggedPost } from 'src/app/models/userTaggedPost.model';
 import { HashtagService } from 'src/app/services/hashtag.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
+import { PostsDisplayComponent } from '../posts-display/posts-display.component';
 
 @Component({
   selector: 'app-edit-post',
@@ -25,7 +27,9 @@ import { UserService } from 'src/app/services/user.service';
 
 export class EditPostComponent implements OnInit {
   @Output() submitEmitter: EventEmitter<Post> = new EventEmitter();
-  @Input() postId: number | undefined;
+  
+  // @Input() postId: number | undefined;
+
 post: Post= {
    description: "",
     imageSorce: "",
@@ -42,7 +46,10 @@ Cesium = Cesium;
 description: string= "";
 user: User;
   
-  constructor(private hashtagService: HashtagService, private postservice: PostService, private userService: UserService, private router: Router) {
+  constructor(private hashtagService: HashtagService, private postservice: PostService,
+     private userService: UserService, private router: Router,
+     @Inject(MAT_DIALOG_DATA) public data: any,
+     public dialogRef: MatDialogRef<PostsDisplayComponent>) {
     this.id = Number(sessionStorage.getItem('id'))
     this.userService.getUserById(this.id).subscribe(user =>
        this.user = user, (error)=> console.log(error));
@@ -80,10 +87,9 @@ user: User;
       console.log(this.post);
       // this.postservice.createPost(this.post);
     });
-    if(this.postId !== undefined)
-    this.postservice.getPost(this.postId).subscribe(
+    if(this.data.postId !== undefined)
+    this.postservice.getPost(this.data.postId).subscribe(
       (res) => {
-        debugger;
 
         if (res != null) {
           res.description = this.post.description;
@@ -94,11 +100,10 @@ user: User;
           res.date = this.post.date;
           res.userId = this.post.userId;
           res.userTaggedPost = this.post.userTaggedPost;
-        
+        debugger;
            this.postservice.updatePost(res);
            this.reloadCurrentRoute();
-           debugger;
-           
+           this.dialogRef.close({event: this.post});
           //  this.router.navigateByUrl('/TimeLine');
           //   this.router.navigateByUrl('/Main-page/TimeLine');
         }
@@ -107,6 +112,7 @@ user: User;
         console.log(error);
       }
     );
+   
   }
 
   reloadCurrentRoute() {
@@ -149,5 +155,8 @@ user: User;
 
   //   return Cesium.Cartesian3.fromDegrees(longitude, latitude);
   // }
+  onNoClick(){
+    this.dialogRef.close({event: this.post});
+  }
 }
 

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Post } from 'src/app/models/post.model';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 // import { Post } from 'src/app/shared/models/post.model';
 
 @Component({
@@ -16,4 +18,5 @@ export class PostsDialogComponent implements OnInit {
   close(): void {
     this.closeDialogEmitter.emit();
   }
+
 }

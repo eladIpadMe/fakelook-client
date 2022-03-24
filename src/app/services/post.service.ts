@@ -57,7 +57,6 @@ export class PostService {
   
   updatePost(post: Post): void{
     const headers = this.headers;
-    debugger;
     let httpOptions = {
       headers: this.headers
     };
@@ -71,15 +70,16 @@ export class PostService {
   manageLike(userId: number, postId: number){
     const headers = this.headers;
     let like: Like = {userId:userId, postId:postId};
-    this.http.post(`${this.url}Post/ManageLike`, like)
+    this.http.post(`${this.url}Post/ManageLike`, like,{headers} )
     .subscribe((res)=> console.log("new like entered!"),
     (error) => console.log(error)
     );
   }
   deletePost(id: number): void {
     const currentUrl = `${this.url}Post/Delete`;
+    const headers = this.headers;
 
-    this.http.delete<any>(currentUrl + "/" + id).subscribe((res) => {
+    this.http.delete<any>(currentUrl + "/" + id, {headers}).subscribe((res) => {
       console.log("post " + id + "been deleted");
       console.log(res);
     },

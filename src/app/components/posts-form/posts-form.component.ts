@@ -74,9 +74,9 @@ user: User;
       this.post.z_Position = 3620170.526302757
       console.log(this.post);
       this.postservice.createPost(this.post);
-      
+      this.dialogRef.close({event: this.post}); 
     });
-    this.dialogRef.close({event: this.post});
+    
   }
   //get wanted hashtag for chips bar menu
   placeholder(placeholder: string): string{

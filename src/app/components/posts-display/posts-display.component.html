@@ -7,8 +7,13 @@
     <div>{{ post.description }}</div>
     <div class= "post-img"><img  src="{{ post.imageSorce }}" alt="{{ post.description }}" /></div>
     <div>
-    <button class ="button-62" *ngIf= "isMypost(post.id)" (click)="isEditClicked()" >Edit   </button>
-    <app-edit-post *ngIf= "clickedToEdit && isMypost(post.id)"  [postId] = "post.id"></app-edit-post>
+    <button mat-raised-button (click)="openEditDialog(post.id)" class="add-post-btn" *ngIf= "isMypost(post.id)">
+      <img
+      src="..\..\..\assets\edit-logo2.png"
+      alt=""
+      class="comment-btn-logo"
+    />
+    </button>
     </div>
     
     <div class="display-likes" *ngIf="checkIfDisplayLikesPressed(post)">

@@ -34,6 +34,8 @@ export class AddCommentComponent implements OnInit {
     
   ngOnInit(): void {
   }
+
+  
 //get wanted hashtag for chips bar menu
   placeholder(placeHolder: string):string{
     return placeHolder;
@@ -81,6 +83,8 @@ export class AddCommentComponent implements OnInit {
   onNoClick(){
     this.dialogRef.close({event: this.comment});
   }
+
+  
 }
   
   

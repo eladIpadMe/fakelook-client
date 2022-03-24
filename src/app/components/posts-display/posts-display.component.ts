@@ -5,7 +5,9 @@ import { UserService } from 'src/app/services/user.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { PostService } from 'src/app/services/post.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 import { AddCommentComponent } from '../add-comment/add-comment.component';
+import { EditPostComponent } from '../edit-post/edit-post.component';
 export interface DialogData {
   post: Post;
 }
@@ -31,7 +33,6 @@ export class PostsDisplayComponent implements OnInit {
   booleanLikeArray: Boolean[] = [];
   currUserId: string | null =  sessionStorage.getItem('id');
   addCommentPresed: boolean = false;
-  clickedToEdit: boolean = false;
   @Output() postDeleteEventEmitter = new EventEmitter<string>();
   
   ngOnInit(): void {
@@ -53,9 +54,7 @@ export class PostsDisplayComponent implements OnInit {
      
   }
 
-  isEditClicked(){
-    this.clickedToEdit = !this.clickedToEdit
-  }
+  
   getPosts(){
     this.postService.getPosts().subscribe((posts) =>{
       this.posts = posts;
@@ -151,5 +150,13 @@ export class PostsDisplayComponent implements OnInit {
 
   checkIfDisplayLikesPressed(post: Post): boolean{
     return this.dispalyLikesPressed[<number>post.id];
+  }
+
+
+  openEditDialog(postId: number | undefined): void{
+    const dialogRef = this.dialog.open(EditPostComponent, {
+      data: { postId }
+    });
+      dialogRef.afterClosed().subscribe();
   }
 }

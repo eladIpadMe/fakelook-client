@@ -1,7 +1,10 @@
+
 <div class="dialog-container" (click)="close()">
+
     <div class="display-center">
       <div class="post-dialog">
         <div>
+          <button mat-button (click)="close()" class="exit-btn-add-comment"><img src="..\..\..\assets\exit-btn-logo.png" alt="exit button" class="exit-img"></button>
           <img src="{{ posts.imageSorce }}" alt="{{ posts.description }}" />
         </div>
         <div class="post-description display-center">
