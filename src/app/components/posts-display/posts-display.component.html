@@ -1,19 +1,20 @@
 <div *ngFor="let post of posts" class="post">
     <div class="user-name">
       {{ post.user?.firstName }} {{ post.user?.lastName }}
+      <button mat-raised-button (click)="openEditDialog(post.id)" class="add-post-btn edit-btn" *ngIf= "isMypost(post.id)">
+        <img
+        src="..\..\..\assets\edit-logo2.png"
+        alt=""
+        class="comment-btn-logo"
+      />
+      </button>
     </div>
    
     <div class="date-posted">{{ post.date | date: "short" }}</div>
     <div>{{ post.description }}</div>
     <div class= "post-img"><img  src="{{ post.imageSorce }}" alt="{{ post.description }}" /></div>
     <div>
-    <button mat-raised-button (click)="openEditDialog(post.id)" class="add-post-btn" *ngIf= "isMypost(post.id)">
-      <img
-      src="..\..\..\assets\edit-logo2.png"
-      alt=""
-      class="comment-btn-logo"
-    />
-    </button>
+    
     </div>
     
     <div class="display-likes" *ngIf="checkIfDisplayLikesPressed(post)">
