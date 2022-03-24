@@ -1,11 +1,15 @@
 <aside>
   <div class="btn-container">
-    <button class="button-65"  (click)="selectedSideBarLeft()"> Filter</button>
-    <button class="button-65"  (click)="selectedSideBarRight()"> Friends</button>
+    <button class=" option-nav"  (click)="selectedSideBarLeft()"> <img src="..\..\..\assets\filter-logo.png" alt=""></button>
+    <button class=" option-nav"  (click)="selectedSideBarRight()"> <img src="..\..\..\assets\add-logo.png" alt=""></button>
   </div>
   
-  <div class="form-container" *ngIf="showLeft"><app-filter class = "push"></app-filter></div>
-  <div *ngIf="showRight"><app-friends class = "push"></app-friends></div>
+  <div class="form-container" *ngIf="showLeft">
+    <app-filter class = "push"></app-filter>
+  </div>
+  <div *ngIf="showRight"><app-posts-form class = "push">
+  </app-posts-form>
+</div>
 </aside>
   <!-- [ngStyle]="{'background-color': filter?  '#1366d6':'#4e7fc8' }" -->
 

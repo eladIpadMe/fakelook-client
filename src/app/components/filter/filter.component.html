@@ -26,38 +26,6 @@
    <div class="tag-friends">
     <app-users-chip [placeHolder]="placeholder('Friends')" (usersTaggedInComment)="addUserTaggedFilter($event)"></app-users-chip>
    </div>
-        <!-- <label for="Publishers">Publishers</label>
-        <input formControlName="Publishers" type="text" />
-        <div class="error" *ngIf="
-            filterForm.controls['Publishers'].touched &&
-            filterForm.controls['Publishers'].invalid
-          ">
-          Publishers not valid
-        </div> -->
-
-<!-- 
-        <label for="Tags">Tags</label>
-        <input formControlName="Tags" type="text" />
-        <div class="error" *ngIf="
-            filterForm.controls['Tags'].touched &&
-            filterForm.controls['Tags'].invalid
-          ">
-          Tags not valid
-        </div> -->
-
-
-        <!-- <label for="TagsUsers">Users</label>
-        <input formControlName="TagsUsers" type="text" />
-        <div class="error" *ngIf="
-            filterForm.controls['TagsUsers'].touched &&
-            filterForm.controls['TagsUsers'].invalid
-          ">
-          TagsUsers not valid
-        </div> -->
-
-
-
-
         <div class="display-center">
             <button type="submit" class="btn" >
                 Filter posts

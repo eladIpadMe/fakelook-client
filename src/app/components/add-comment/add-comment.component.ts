@@ -18,24 +18,6 @@ import { DialogData, PostsDisplayComponent } from '../posts-display/posts-displa
 })
 export class AddCommentComponent implements OnInit {
   id: number = 0 ;
- 
-
-  //users
-  
-  // separatorKeysCodes: number[] = [ENTER, COMMA];
-  // fruitCtrl = new FormControl();
-  // filteredFruits: Observable<string[]>;
-  // fruits: string[] = ['Lemon'];
-  // allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
-  // @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
- 
-  
-  // addOnBlur = true;
-  // readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  // fruits: Fruit[] = [{name: 'Lemon'}, {name: 'Lime'}, {name: 'Apple'}];
-
-
-  //hashtags: Tag[] = [];
   userTagged: UserTaggedComment[] =[];
   hashtags: Tag[]= [];
   content: string= "";
