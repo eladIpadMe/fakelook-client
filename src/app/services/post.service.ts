@@ -42,6 +42,27 @@ export class PostService {
         .subscribe((res) => this.postsSubject.next(res)));
     return this.postsSubject;
   }
+
+  getPost(id:number): Observable<Post> {
+    const headers = this.headers;
+    return this.http.get<Post>(`${this.url}Post/`+id, {headers});
+  }
+  
+  
+  updatePost(post: Post): void{
+    const headers = this.headers;
+    debugger;
+    let httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+    this.http.put<Post>(`${this.url}Post/` + post.id, post, httpOptions).subscribe((res) => {     debugger;
+
+    },
+    (error) => console.log(error)
+    ); 
+  }
+
+
   manageLike(userId: number, postId: number){
     const headers = this.headers;
     let like: Like = {userId:userId, postId:postId};
@@ -50,7 +71,7 @@ export class PostService {
     (error) => console.log(error)
     );
   }
-  deletePost(id: string): void {
+  deletePost(id: number): void {
     const currentUrl = `${this.url}Post/Delete`;
 
     this.http.delete<any>(currentUrl + "/" + id).subscribe((res) => {
@@ -66,5 +87,6 @@ export class PostService {
     this.subs.push(this.http.post<Post[]>(currentUrl, postFilter,{headers:this.headers}).subscribe((res)=>{
       this.postsSubject.next([...res]);            
     }))
+    debugger;
   }
 }

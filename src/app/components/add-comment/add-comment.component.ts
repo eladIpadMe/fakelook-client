@@ -5,9 +5,10 @@ import { Comment } from 'src/app/models/comment.model';
 import { HashtagService } from 'src/app/services/hashtag.service';
 import { UserTaggedComment } from 'src/app/models/userTaggedComment.model';
 import { CommentService } from 'src/app/services/comment.service';
+
+
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogData, PostsDisplayComponent } from '../posts-display/posts-display.component';
-//import { MatDialog } from '@angular/material';
 
 
 
@@ -23,6 +24,7 @@ export class AddCommentComponent implements OnInit {
   content: string= "";
   comment: Comment;
   @Input() post?: Post;
+
   constructor(private commentService: CommentService,
      private hashtagService: HashtagService,
      public dialogRef: MatDialogRef<PostsDisplayComponent>,
@@ -71,6 +73,9 @@ export class AddCommentComponent implements OnInit {
     }
     this.comment = newComment;
     this.commentService.addComment(newComment);
+    this.router.navigateByUrl('/Main-page');
+    // this.router.navigateByUrl('/Main-page');
+    // this.router.navigateByUrl('/Main-page/-Timeline');
   }
 
   onNoClick(){

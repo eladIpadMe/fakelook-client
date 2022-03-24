@@ -24,7 +24,7 @@ export class PostsMenuComponent implements OnInit {
   onNewPost(post: Post): void {
     this.postService.createPost(post);
   }
-  onPostDelete(id: string): void {
+  onPostDelete(id: number): void {
     this.postService.deletePost(id);
   }
 }

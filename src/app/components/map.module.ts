@@ -6,11 +6,13 @@ import { AngularCesiumWidgetsModule } from 'angular-cesium';
 import { MapComponent } from './map/map.component';
 import { PostsDialogComponent } from './posts-dialog/posts-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { EditPostComponent } from './edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
     MapComponent,
     PostsDialogComponent,
+    
   ],
   exports: [MapComponent],
   imports: [
