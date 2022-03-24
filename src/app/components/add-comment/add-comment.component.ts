@@ -73,7 +73,7 @@ export class AddCommentComponent implements OnInit {
     }
     this.comment = newComment;
     this.commentService.addComment(newComment);
-    this.router.navigateByUrl('/Main-page');
+    //this.router.navigateByUrl('/Main-page');
     // this.router.navigateByUrl('/Main-page');
     // this.router.navigateByUrl('/Main-page/-Timeline');
   }
