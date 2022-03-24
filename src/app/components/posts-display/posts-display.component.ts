@@ -6,6 +6,9 @@ import { LikeService } from 'src/app/services/like.service';
 import { UserService } from 'src/app/services/user.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { PostService } from 'src/app/services/post.service';
+import { Router } from '@angular/router';
+
+
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AddCommentComponent } from '../add-comment/add-comment.component';
 export interface DialogData {
@@ -33,9 +36,9 @@ export class PostsDisplayComponent implements OnInit {
   userId: number = 0;
   likesCount = new Map();
   booleanLikeArray: Boolean[] = [];
-
+  currUserId: string | null =  sessionStorage.getItem('id');
   addCommentPresed: boolean = false;
-  // @Input() posts$!: Observable<Post[]>;
+  clickedToEdit: boolean = false;
   @Output() postDeleteEventEmitter = new EventEmitter<string>();
   
   ngOnInit(): void {
@@ -43,8 +46,7 @@ export class PostsDisplayComponent implements OnInit {
     this.userId = Number(sessionStorage.getItem('id'));
     this.userService.getUserById(this.userId).subscribe((user)=> {
       this.user = user;
-      //console.log(`User is: `);
-      //console.log(this.user);
+   
     },
     (error) => console.log(error));
 
@@ -54,7 +56,6 @@ export class PostsDisplayComponent implements OnInit {
   
     this.postService.getPosts().subscribe((posts) =>{
       this.postsD = posts;
-      //console.log(this.posts);
       this.postsD.forEach(p =>{
         p.likes?.forEach(like => {
           if(like.isActive){
@@ -65,7 +66,6 @@ export class PostsDisplayComponent implements OnInit {
               this.likesCount.set(p.id, 1);
             }
           }
-          //console.log(like);
           if(like.userId === this.userId ){
             this.booleanLikeArray[<number>p.id] = false;
             if(like.isActive === true){
@@ -80,7 +80,6 @@ export class PostsDisplayComponent implements OnInit {
           }
         });
          
-        //this.likedPost[<number>p.id]= false;
         this.dispalyLikesPressed[<number>p.id] = false;
         this.commentsPressed[<number>p.id] = false;
       })
@@ -90,9 +89,7 @@ export class PostsDisplayComponent implements OnInit {
   findIndex(post: Post): Number{
     return this.likesCount.get(post.id);
   }
-  // deletePost(post: Post): void {
-  //   this.postDeleteEventEmitter.emit(post.id);
-  // }
+  
 
   highlightLike(post: Post){
     this.likedPost[<number>post.id] = !this.likedPost[<number>post.id];
@@ -103,6 +100,9 @@ export class PostsDisplayComponent implements OnInit {
     else{
       this.likesCount.set(post.id, this.likesCount.get(post.id) - 1);
     }
+    
+   
+
  
     // console.log("the liked post is: ");
     // console.log(post);
@@ -137,6 +137,7 @@ export class PostsDisplayComponent implements OnInit {
   
   
     //this.postService.updatePost(post);
+
   }
   openDialog(post: Post): void{
     const dialogRef = this.dialog.open(AddCommentComponent
@@ -200,6 +201,19 @@ export class PostsDisplayComponent implements OnInit {
     this.commentService.addComment(newComment);
     newComment.user = this.user;
     post.comments?.push(newComment);
-    
+   
+  }
+
+  Edit(post: Post){
+    this.clickedToEdit = !this.clickedToEdit;
+  }
+
+  Delete(post: Post){
+    if(post.id !== undefined)
+    this.postService.deletePost(post.id);
+  }
+
+  isUserPost(postId: number | undefined): boolean{
+    return postId === Number(this.currUserId)
   }
 }

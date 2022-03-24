@@ -1,0 +1,28 @@
+<form #form="ngForm" (ngSubmit)="submitPost()">
+    <div class="display-center"><h2>Edit Post</h2></div>
+    <label for="description">Description</label>
+    <input
+      type="text"
+      id="description"
+      [(ngModel)]="post.description"
+      required
+      name="description"
+    />
+  
+    <app-file-upload (pictureUploaded)="changeFile($event)">  </app-file-upload>
+    
+    <div class="tag-friends">
+      <app-users-chip [placeHolder]="placeholder('Tag Friends')" (usersTaggedInComment)="addUserTagged($event)"></app-users-chip>
+    </div>
+    <div class="hashtags">
+      <app-tags-chip [placeHolder]="placeholder('Hashtags')" (tagsChosen)="addTagges($event)"></app-tags-chip>
+    </div>
+    <div class="display-center">
+      <button type="submit" class="btn" [disabled]="!form.valid ||!file">
+        Confirm
+      </button>
+    </div>
+  </form>
+  
+
+  
