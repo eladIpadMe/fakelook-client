@@ -1,6 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Like } from 'src/app/models/like.model';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild,Inject } from '@angular/core';
 import { Post } from 'src/app/models/post.model';
 import { User } from 'src/app/models/user.model';
 import { Comment } from 'src/app/models/comment.model';
@@ -10,6 +8,13 @@ import { CommentService } from 'src/app/services/comment.service';
 import { PostService } from 'src/app/services/post.service';
 import { Router } from '@angular/router';
 
+
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AddCommentComponent } from '../add-comment/add-comment.component';
+export interface DialogData {
+  post: Post;
+  //name: string;
+}
 @Component({
   selector: 'app-posts-display',
   templateUrl: './posts-display.component.html',
@@ -19,8 +24,8 @@ export class PostsDisplayComponent implements OnInit {
   likeLogoSrc: string = "..\..\..\assets\like-logo-original.png";
   constructor(private postService: PostService, 
     private userService: UserService,
-    private likeService: LikeService,
-    private commentService: CommentService) {}
+    private commentService: CommentService,
+    public dialog: MatDialog) {}
     @Input() posts: Post[] | undefined;
   postsD: Post[] = [];
   dispalyLikesPressed: boolean[] = [];
@@ -97,8 +102,53 @@ export class PostsDisplayComponent implements OnInit {
     }
     
    
-  }
 
+ 
+    // console.log("the liked post is: ");
+    // console.log(post);
+    // if(post.likes){
+    //   post.likes.forEach(like => {
+    //     if(like.user === this.user){
+    //       this.newLike = false;
+    //       this.getLike()
+    //     }
+    //     // else{
+    //     //   like.isActive = !like.isActive;
+    //     // }
+    //   });
+    // }
+    // //like already exists and the user removed it- update database
+    //   if(!this.newLike){
+    //     this.likeService.updateLike(like)
+    //   }
+
+    //   //new like- add to database
+    //   if(this.newLike){
+    //     let like = {
+    //       isActive: true,
+    //       userId: this.userId,
+    //       postId: <number>post.id
+    //     }
+    //     console.log(`new Like is: `);
+    //     console.log(like);
+    //     this.likeService.createLike(like);
+    //     console.log(post);
+    //   }
+  
+  
+    //this.postService.updatePost(post);
+
+  }
+  openDialog(post: Post): void{
+    const dialogRef = this.dialog.open(AddCommentComponent
+      ,{data: {post: post}});
+      dialogRef.afterClosed().subscribe(comment=>{
+        post.comments?.push(comment);
+        console.log("new comment");
+        console.log(comment);
+      });
+  }
+  
   comment(){
 
   }

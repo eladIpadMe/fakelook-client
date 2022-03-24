@@ -1,6 +1,6 @@
 <form #form="ngForm" (ngSubmit)="submitPost()">
     <div class="display-center"><h2>Add Post</h2></div>
-    <label for="description">Description</label>
+    <label for="">Description</label><br>
     <input
       type="text"
       id="description"
@@ -9,7 +9,7 @@
       name="description"
     />
   
-    <app-file-upload (pictureUploaded)="changeFile($event)">  </app-file-upload>
+    <app-file-upload (pictureUploaded)="changeFile($event)" class="img-upload">  </app-file-upload>
     
     <div class="tag-friends">
       <app-users-chip [placeHolder]="placeholder('Tag Friends')" (usersTaggedInComment)="addUserTagged($event)"></app-users-chip>

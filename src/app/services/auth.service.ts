@@ -48,20 +48,7 @@ export class AuthService implements OnDestroy {
       catchError((_) => of(false))
     );
   }
-  secret(): Observable<any> {
-    const currentUrl = `${this.url}Secret/`;
-    const headers = new HttpHeaders({
-      Authorization: 'Bearer ' + this.getToken(),
-    });
-    const all$ = this.http.get<any>(currentUrl + 'All');
-    const auth$ = this.http
-      .get<any>(currentUrl + 'Authenticated', { headers })
-      .pipe(catchError((err) => of({ msg: 'you are not authenticated' })));
-    const admin$ = this.http
-      .get<any>(currentUrl + 'Admin', { headers })
-      .pipe(catchError((err) => of({ msg: 'you are not admin' })));
-    return combineLatest(all$, auth$, admin$).pipe(map((res) => ({ ...res })));
-  }
+ 
   private getToken(): string | null {
     return sessionStorage.getItem('token');
   }

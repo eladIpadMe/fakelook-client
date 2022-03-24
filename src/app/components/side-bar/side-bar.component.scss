@@ -1,25 +1,39 @@
 aside {
-    background-color: #316ec967;
+    //background-color: #316ec967;
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
-    max-width: 45%;
-    height: 100%;
-    z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+    //max-width: 45%;
+    //height: 100%;
+    //z-index: 1;
     overflow: auto;
- 
-    z-index: 20;
+    //z-index: 20;
   }
-  
+  img{
+    width: 0.9rem;
+    height: 0.9rem;
+  }
   .btn-container{
     display: flex;
     z-index: 50;
+    margin: 0;
   }
-  button{
-    flex-grow: 1;
+  // button{
+  //   width: 100%;
+  //   flex-grow: 1;
+    
+  // }
+  
+  .option-nav :hover{
+    background-color:  rgba(238, 238, 238, 1);
+    box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
   }
-  .button-65 {
+  .option-nav {
     appearance: none;
     border-style: none;
     box-shadow: none;
@@ -34,7 +48,7 @@ aside {
     letter-spacing: normal;
     outline: none;
     overflow: hidden;
-    padding: 14px 30px;
+    padding: 0;
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -44,36 +58,45 @@ aside {
     vertical-align: top;
     white-space: nowrap;
   }
+.comment-btn-logo{
+  width: 100%;
+  height: 100%;
+}
+h1{
+  margin: 0;
+  text-align: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
-  .button-65:hover {
-    background-color: #1366d6;
-    box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
-    opacity: 1;
-    transform: translateY(0);
-    transition-duration: .35s;
+}
+  .add-post-btn{
+
+    border-radius: 60px;
+    border: none;
+    width: 20%;
+    height: 20%;
+    margin: 0.5rem auto;
+    cursor: pointer;
+
   }
-
-  .button-65:hover:after {
+  .option-nav :hover:after  {
     opacity: .5;
   }
-
-  .button-65:active {
+  .option-nav :active {
     box-shadow: rgba(0, 0, 0, .1) 0 3px 6px 0, rgba(0, 0, 0, .1) 0 0 10px 0, rgba(0, 0, 0, .1) 0 1px 4px -1px;
     transform: translateY(2px);
     transition-duration: .35s;
   }
-
-  .button-65:active:after {
+  .option-nav :after{
     opacity: 1;
   }
 
   @media (min-width: 768px) {
-    .button-65 {
+    .option-nav {
       padding: 14px 22px;
       width: 50%;
     }
   }
-
   .push{
+    z-index: 2;
      position: relative;
   }

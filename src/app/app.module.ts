@@ -28,7 +28,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { TagsChipComponent } from './components/tags-chip/tags-chip.component';
 import { UsersChipComponent } from './components/users-chip/users-chip.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     TagsChipComponent,
@@ -64,7 +64,8 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
    AngularCesiumWidgetsModule,
      ReactiveFormsModule,
      BrowserAnimationsModule,
-     HttpClientModule
+     HttpClientModule,
+     MatDialogModule
   ],
   exports: [ RouterModule  ],
   providers: [],

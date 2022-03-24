@@ -15,8 +15,8 @@ const routes: Routes = [
   {path: 'Main-page', component: MainPageComponent, children: [
     {path: 'Map', component: MapComponent},
     {path: 'TimeLine', component: TimelineComponent},
-    {path: '', redirectTo: 'Map', pathMatch: 'full'},
-    {path: `**`, component: LoginComponent}
+    {path: '', redirectTo: 'TimeLine', pathMatch: 'full'},
+    {path: `**`, component: TimelineComponent}
   ]},
   {path:`addComment`, component: AddCommentComponent},
   {path:`tagChip`, component: TagsChipComponent},
