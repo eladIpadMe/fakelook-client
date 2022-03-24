@@ -20,6 +20,9 @@ export class PostService {
   private url= environment.url;
   private subs: Subscription[] = [];
   private post1: Post[] = [];
+
+  
+
   createPost(post: Post): void {
 
     const currentUrl = `${this.url}Post/Post`;
@@ -29,9 +32,13 @@ export class PostService {
         console.log(post);
         console.log("New post entered!");
         console.log(res);
+        this.postsSubject.value.push(post);
+        this.postsSubject.next(this.postsSubject.value)
       },
       (error) => console.log(error)
       );
+      // this.getPosts();
+      
   }
   getPosts(): Observable<Post[]> {
     const currentUrl = `${this.url}Post`;
@@ -87,6 +94,5 @@ export class PostService {
     this.subs.push(this.http.post<Post[]>(currentUrl, postFilter,{headers:this.headers}).subscribe((res)=>{
       this.postsSubject.next([...res]);            
     }))
-    debugger;
   }
 }

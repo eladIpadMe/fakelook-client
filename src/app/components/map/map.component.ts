@@ -45,6 +45,7 @@ export class MapComponent implements OnInit {
   showDialog = false;
   Cesium = Cesium;
   flag = false;
+  
   ngOnInit(): void {
       this.entities$ = this.postService.getPosts().pipe(
         pairwise(),
@@ -58,7 +59,12 @@ export class MapComponent implements OnInit {
         }),
         mergeMap((post) => post)
       );
+      
+     
   }
+
+
+
   getActionType(post: Post, newPosts: Post[]): ActionType {
     let action;
     newPosts.find((p) => p.id === post.id)

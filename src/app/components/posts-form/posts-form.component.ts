@@ -11,6 +11,7 @@ import { UserTaggedPost } from 'src/app/models/userTaggedPost.model';
 import { HashtagService } from 'src/app/services/hashtag.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -73,6 +74,7 @@ user: User;
       this.post.z_Position = 3620170.526302757
       console.log(this.post);
       this.postservice.createPost(this.post);
+      
     });
     
   }
